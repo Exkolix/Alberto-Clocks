@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alberto Style Guide</title>
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="stylesheet" href="../css/vendor.bootstrap.min.css">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/shell.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/home.css">
+  <style>
+    body { padding: 0; }
+    .sg-note { font-size: .8rem; color: var(--c-muted-dark); margin-top: .6rem; max-width: 46rem; }
+    .section--ivory .sg-note { color: var(--c-muted-light); }
+    .sg-label { font-size: .62rem; letter-spacing: .26em; text-transform: uppercase; color: var(--c-gold); font-weight: 500; margin: 2.4rem 0 1rem; }
+    .sg-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 1rem; }
+    .sg-sw { border-radius: var(--radius); overflow: hidden; border: 1px solid rgba(255,255,255,.14); background: #111; }
+    .sg-sw i { display: block; height: 84px; }
+    .sg-sw b { display: block; padding: .7rem .8rem 0; font-size: .8rem; }
+    .sg-sw span { display: block; padding: .1rem .8rem .8rem; font-size: .72rem; color: var(--c-muted-dark); }
+    .sg-row { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+    .sg-grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+    pre { margin: 1rem 0 0; padding: 1rem; background: #0a0a0a; border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius); color: #d9c79d; font-size: .75rem; overflow-x: auto; line-height: 1.6; }
+    .sg-two { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    @media (max-width: 767.98px) { .sg-two { grid-template-columns: 1fr; } }
+    .sg-two > div { padding: 2rem; }
+  </style>
+</head>
+<body>
+
+<section class="page-head">
+  <p class="eyebrow">Team reference</p>
+  <h1 class="title">Alberto Style Guide</h1>
+  <span class="rule"></span>
+  <p class="sub">Clean, gallery-like luxury. Dark for photos, ivory for reading. Very little text.</p>
+</section>
+
+<!-- COLOUR -->
+<section class="section section--dark">
+  <div class="wrap">
+    <h2 class="title">Colour</h2>
+    <p class="sg-note">Always use the variable (for example <code>var(--c-gold)</code>), never type the hex code.</p>
+    <div class="sg-swatches" style="margin-top:1.6rem">
+      <div class="sg-sw"><i style="background:#0B0B0B"></i><b>Black</b><span>--c-black #0B0B0B<br>Header, dark sections</span></div>
+      <div class="sg-sw"><i style="background:#1A1A1A"></i><b>Charcoal</b><span>--c-charcoal #1A1A1A<br>Photo tiles, alt dark</span></div>
+      <div class="sg-sw"><i style="background:#F7F3EA"></i><b>Ivory</b><span>--c-ivory #F7F3EA<br>Reading sections</span></div>
+      <div class="sg-sw"><i style="background:#C9A25A"></i><b>Champagne gold</b><span>--c-gold #C9A25A<br>Prices, lines, hover, active, main button</span></div>
+      <div class="sg-sw"><i style="background:#7FA3B8"></i><b>Steel blue</b><span>--c-steel #7FA3B8<br>Sparingly: focus, tiny highlights</span></div>
+      <div class="sg-sw"><i style="background:#1E1712"></i><b>Espresso ink</b><span>--c-ink #1E1712<br>Text on ivory</span></div>
+    </div>
+    <p class="sg-note">White text on dark. Espresso text on ivory. Gold is the only accent: if everything is gold, nothing is.</p>
+  </div>
+</section>
+
+<!-- TYPE -->
+<section class="section section--ivory">
+  <div class="wrap">
+    <h2 class="title">Type</h2>
+    <p class="sg-note">One font: Montserrat. Headings Light (300), large, UPPERCASE, wide letter spacing. Body Regular, 14px desktop and 16px phone.</p>
+    <div class="sg-label">Page title (.title)</div>
+    <h1 class="title" style="font-size:clamp(2rem,5vw,3.4rem)">Our Collections</h1>
+    <div class="sg-label">Small label (.eyebrow)</div>
+    <p class="eyebrow">What we do</p>
+    <div class="sg-label">Sub line (.sub)</div>
+    <p class="sub" style="margin:0">Four ways to tell time</p>
+    <div class="sg-label">Card title and body</div>
+    <h3 style="font-size:.8rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase">Vintage</h3>
+    <p style="color:var(--c-muted-light)">Restored classics from past decades. One short line per card.</p>
+    <pre>&lt;h2 class="title split"&gt;&lt;span&gt;Our Collections&lt;/span&gt;&lt;/h2&gt;
+&lt;span class="rule reveal"&gt;&lt;/span&gt;
+&lt;p class="sub reveal"&gt;Four ways to tell time&lt;/p&gt;</pre>
+  </div>
+</section>
+
+<!-- BUTTONS -->
+<section class="section section--dark">
+  <div class="wrap">
+    <h2 class="title">Buttons</h2>
+    <p class="sg-note">Gold button = the one main action on a screen. Outline button = secondary. Text link = quiet extra. Never more than one gold button in view.</p>
+    <div class="sg-row" style="margin-top:1.6rem">
+      <a class="btn-gold" href="#">Discover <svg viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 5h16M12 1l4 4-4 4"/></svg></a>
+      <a class="btn-ghost" href="#">Close</a>
+      <a class="text-link" href="#" style="margin-top:0">All services <svg width="18" height="10" viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 5h16M12 1l4 4-4 4"/></svg></a>
+    </div>
+    <pre>&lt;a class="btn-gold" href="#/products"&gt;Discover&lt;/a&gt;
+&lt;a class="btn-ghost" href="#/gallery"&gt;Close&lt;/a&gt;
+&lt;a class="text-link" href="#/support"&gt;All services&lt;/a&gt;</pre>
+  </div>
+</section>
+
+<!-- SECTIONS -->
+<section class="section--dark">
+  <div class="sg-two">
+    <div style="background:var(--c-black)"><p class="eyebrow">Dark section</p><h3 class="title" style="font-size:1.4rem">.section--dark</h3><p class="sg-note">For photo-heavy screens. Hides uneven photo backgrounds.</p></div>
+    <div style="background:var(--c-ivory);color:var(--c-ink)"><p class="eyebrow">Ivory section</p><h3 class="title" style="font-size:1.4rem">.section--ivory</h3><p class="sg-note" style="color:var(--c-muted-light)">For reading-heavy screens: About, Support, Contact.</p></div>
+  </div>
+</section>
+
+<!-- CARDS -->
+<section class="section section--dark">
+  <div class="wrap">
+    <h2 class="title">Cards</h2>
+    <p class="sg-note">Photos always sit in a 4:5 tile (portrait) with rounded corners (6px). Zoom gently on hover. Name, then price or one line. Nothing more.</p>
+    <div class="sg-label">Watch card</div>
+    <div class="sg-grid3">
+      <a class="watch-card" href="#"><div class="watch-img"><img src="../assets/img/watches/monarch-tourbillon.svg" alt=""></div><div class="watch-text"><h3 class="watch-name">Monarch Tourbillon</h3><p class="watch-desc">A hand-finished tourbillon with a midnight dial.</p></div></a>
+      <a class="coll-card" href="#" style="opacity:1"><div class="coll-img"><img src="../assets/img/collections/sport.svg" alt=""></div><h3>Sport &amp; Dive</h3><p>Built for water, trails and speed.</p></a>
+      <a class="svc-card" href="#" style="min-height:0"><div class="svc-top"><span>Service 01</span></div><h3>Repair</h3><p>Movements serviced, cases restored.</p><div class="svc-foot"><span>Learn more</span><svg viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 5h16M12 1l4 4-4 4"/></svg></div></a>
+    </div>
+    <pre>&lt;a class="watch-card" href="#"&gt;
+  &lt;div class="watch-img"&gt;&lt;img src="assets/img/watches/xxx.svg" alt=""&gt;&lt;/div&gt;
+  &lt;div class="watch-text"&gt;&lt;h3 class="watch-name"&gt;Name&lt;/h3&gt;&lt;p class="watch-desc"&gt;One line.&lt;/p&gt;&lt;/div&gt;
+&lt;/a&gt;</pre>
+  </div>
+</section>
+
+<!-- COMPONENTS -->
+<section class="section section--charcoal">
+  <div class="wrap">
+    <h2 class="title">Tabs, accordion, form, table</h2>
+    <p class="sg-note">These come from Bootstrap with our look added. Use the same markup and they work without any JavaScript from you.</p>
+
+    <div class="sg-label">Tabs (.nav-lux)</div>
+    <ul class="nav nav-lux" role="tablist">
+      <li><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#t1" type="button">Abuja</button></li>
+      <li><button class="nav-link" data-bs-toggle="tab" data-bs-target="#t2" type="button">Lagos</button></li>
+      <li><button class="nav-link" data-bs-toggle="tab" data-bs-target="#t3" type="button">Port Harcourt</button></li>
+    </ul>
+    <div class="tab-content" style="padding-top:1.2rem">
+      <div class="tab-pane fade show active" id="t1">Abuja panel</div><div class="tab-pane fade" id="t2">Lagos panel</div><div class="tab-pane fade" id="t3">Port Harcourt panel</div>
+    </div>
+
+    <div class="sg-label">Accordion (.accordion-lux)</div>
+    <div class="accordion accordion-lux" id="faq">
+      <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q1">How long does a repair take?</button></h3>
+        <div id="q1" class="accordion-collapse collapse" data-bs-parent="#faq"><div class="accordion-body">Plain, short answer here.</div></div></div>
+      <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2">Do you buy watches?</button></h3>
+        <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faq"><div class="accordion-body">Plain, short answer here.</div></div></div>
+    </div>
+
+    <div class="sg-label">Form fields (.field)</div>
+    <div style="max-width:30rem">
+      <div class="field"><label for="sgn">Name</label><input id="sgn" type="text"><span class="error"></span></div>
+      <div class="field"><label for="sgm">Message</label><textarea id="sgm"></textarea><span class="error"></span></div>
+      <button class="btn-gold" type="button">Send message</button>
+    </div>
+
+    <div class="sg-label">Table (.table-lux)</div>
+    <table class="table-lux">
+      <thead><tr><th></th><th>Watch</th><th>Line-up</th><th>Price</th></tr></thead>
+      <tbody>
+        <tr><td><img src="../assets/img/watches/abyss-diver-300.svg" alt=""></td><td>Abyss Diver 300</td><td>Sport &amp; Dive</td><td class="price">$1,350</td></tr>
+        <tr><td><img src="../assets/img/watches/solar-trail.svg" alt=""></td><td>Solar Trail</td><td>Sport &amp; Dive</td><td class="price">$420</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- MOTION -->
+<section class="section section--dark">
+  <div class="wrap">
+    <h2 class="title">Motion</h2>
+    <p class="sg-note">Calm and slow. Things fade up or slide in once, with a soft landing. Add a class, nothing else:</p>
+    <pre>class="reveal"                 fades up when it scrolls into view
+class="reveal reveal--up"      slides up from further down (cards)
+style="--i:2"                  stagger: 0, 1, 2, 3 ... one after another
+class="split"  + &lt;span&gt;       heading text rises out of a mask
+class="reveal-img"             picture wipes open (put the &lt;img&gt; inside)</pre>
+    <p class="sg-note">Do not write your own animations or JavaScript. Hover and active colours are gold. If you want a new effect, ask Obash.</p>
+  </div>
+</section>
+
+<section class="section section--ivory">
+  <div class="wrap">
+    <h2 class="title">Never do this</h2>
+    <p class="sg-note">No badges or chips, stat rows, testimonials, certifications or invented history. No Swiss or Geneva wording, no CHF, no real company names. Prices in USD. Cities: Abuja, Lagos, Port Harcourt. No "Book appointment" buttons, no currency switcher, no PDF downloads. Corners 6px. One short line of text per card.</p>
+  </div>
+</section>
+
+<script src="../js/vendor/jquery.min.js"></script>
+<script src="../js/vendor/bootstrap.bundle.min.js"></script>
+<script>
+  // reveal-on-scroll so the guide behaves like the site
+  document.querySelectorAll('.reveal,.split,.reveal-img').forEach(function (e) { e.classList.add('in'); });
+</script>
+</body>
+</html>

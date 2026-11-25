@@ -1,0 +1,51 @@
+/* ==========================================================
+   SHARED COMPONENTS  (owner: Obash)
+   Ready-made pieces for every screen. Teammates: use these classes, do not copy-paste your own versions.
+   See them live in docs/style-guide.html
+   ========================================================== */
+
+/* ---------- Page head: the title block at the top of every screen except Home ---------- */
+.page-head { padding: clamp(3.5rem, 8vw, 6.5rem) var(--gutter) clamp(2.2rem, 4vw, 3.4rem); text-align: center; background: var(--c-black); color: var(--c-white); border-bottom: 1px solid var(--c-line-dark); }
+.page-head .title { font-size: clamp(1.8rem, 4vw, 3rem); }
+
+/* ---------- Tabs (Bootstrap .nav) ----------
+   <ul class="nav nav-lux"><li><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#a">Abuja</button></li>... */
+.nav-lux { display: flex; flex-wrap: wrap; gap: .2rem clamp(1.2rem, 3vw, 2.4rem); padding: 0; margin: 0; list-style: none; border-bottom: 1px solid var(--c-line-dark); }
+.nav-lux .nav-link { position: relative; background: none; border: 0; border-radius: 0; padding: .95rem 0; color: var(--c-muted-dark); font-size: .72rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; transition: color var(--dur-fast); }
+.nav-lux .nav-link::after { content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: var(--c-gold); transform: scaleX(0); transform-origin: 0 50%; transition: transform .4s var(--ease); }
+.nav-lux .nav-link:hover, .nav-lux .nav-link.active { color: var(--c-gold); background: none; }
+.nav-lux .nav-link:hover::after, .nav-lux .nav-link.active::after { transform: scaleX(1); }
+
+/* ---------- Accordion (Bootstrap) ----------
+   <div class="accordion accordion-lux" id="faq"> ...standard Bootstrap accordion markup... */
+.accordion-lux { --bs-accordion-bg: transparent; --bs-accordion-border-color: transparent; --bs-accordion-btn-bg: transparent; --bs-accordion-active-bg: transparent; --bs-accordion-btn-focus-box-shadow: none; }
+.accordion-lux .accordion-item { background: transparent; border: 0; border-bottom: 1px solid var(--c-line-dark); color: inherit; border-radius: 0; }
+.accordion-lux .accordion-button { background: transparent; color: inherit; box-shadow: none; padding: 1.4rem 0; font-size: 1rem; font-weight: 500; transition: color var(--dur-fast); }
+.accordion-lux .accordion-button:hover, .accordion-lux .accordion-button:not(.collapsed) { color: var(--c-gold); }
+.accordion-lux .accordion-button::after { filter: invert(1); }
+.accordion-lux .accordion-body { padding: 0 0 1.6rem; color: var(--c-muted-dark); line-height: 1.8; }
+
+/* ---------- Form fields ----------
+   <div class="field"><label for="n">Name</label><input id="n" type="text"><span class="error"></span></div> */
+.field { display: block; margin-bottom: 1.5rem; }
+.field label { display: block; margin-bottom: .45rem; font-size: .62rem; font-weight: 500; letter-spacing: .24em; text-transform: uppercase; color: var(--c-gold); }
+.field input, .field textarea, .field select { width: 100%; padding: .7rem 0; background: transparent; color: inherit; font: inherit; border: 0; border-radius: 0; border-bottom: 1px solid rgba(255, 255, 255, .3); transition: border-color .3s; }
+.field input:focus, .field textarea:focus, .field select:focus { outline: 0; border-bottom-color: var(--c-gold); }
+.field textarea { min-height: 7rem; resize: vertical; }
+.field .error { display: block; min-height: 1.1rem; margin-top: .3rem; font-size: .75rem; color: #E58B7B; }
+.section--ivory .field input, .section--ivory .field textarea, .section--ivory .field select { border-bottom-color: var(--c-line-light); }
+
+/* ---------- Table (Price List) ---------- */
+.table-lux { width: 100%; border-collapse: collapse; }
+.table-lux th { padding: 1rem .8rem; text-align: left; font-size: .62rem; font-weight: 500; letter-spacing: .24em; text-transform: uppercase; color: var(--c-gold); border-bottom: 1px solid var(--c-line-dark); }
+.table-lux td { padding: 1rem .8rem; vertical-align: middle; border-bottom: 1px solid rgba(255, 255, 255, .1); }
+.table-lux tbody tr { transition: background var(--dur-fast); cursor: pointer; }
+.table-lux tbody tr:hover { background: rgba(201, 162, 90, .08); }
+.table-lux img { width: 52px; height: 65px; object-fit: cover; border-radius: 4px; }
+.table-lux .price { color: var(--c-gold); font-weight: 500; white-space: nowrap; }
+
+/* ---------- Checkbox / range (filters) ---------- */
+.check-lux .form-check-input { background-color: transparent; border-color: rgba(255, 255, 255, .4); }
+.check-lux .form-check-input:checked { background-color: var(--c-gold); border-color: var(--c-gold); }
+.check-lux .form-check-input:focus { box-shadow: 0 0 0 .2rem rgba(127, 163, 184, .35); }
+input[type="range"] { accent-color: var(--c-gold); }

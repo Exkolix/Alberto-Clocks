@@ -1,0 +1,86 @@
+/* ==========================================================
+   BASE  (owner: Obash) - page defaults, buttons, scroll reveal helpers
+   ========================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--c-black);
+  color: var(--c-white);
+  font-family: var(--font);
+  font-weight: 400;
+  font-size: 1rem;                    /* 16px on mobile */
+  line-height: 1.6;
+  padding-top: var(--header-h);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+@media (min-width: 768px) { body { font-size: .875rem; } }   /* 14px on desktop */
+body.menu-open { overflow: hidden; }
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; }
+h1, h2, h3, h4, p, ul { margin: 0; padding: 0; }
+ul { list-style: none; }
+:focus-visible { outline: 2px solid var(--c-steel); outline-offset: 3px; }
+
+#app { min-height: 60vh; }
+
+/* ---- layout helpers ---- */
+.wrap { max-width: var(--content-w); margin-inline: auto; }
+.section { padding: clamp(4rem, 9vw, 8rem) var(--gutter); position: relative; }
+.section--dark { background: var(--c-black); color: var(--c-white); }
+.section--charcoal { background: var(--c-charcoal); color: var(--c-white); }
+.section--ivory { background: var(--c-ivory); color: var(--c-ink); }
+
+.title {
+  font-weight: 300; text-transform: uppercase; letter-spacing: var(--track-wide);
+  font-size: var(--fs-h2); line-height: 1.25;
+}
+.rule { display: block; width: 56px; height: 1px; background: var(--c-gold); margin: 1.4rem auto 0; transform-origin: center; }
+.sub { font-size: .75rem; letter-spacing: .22em; text-transform: uppercase; margin-top: 1.1rem; }
+.section--ivory .sub { color: var(--c-muted-light); }
+.section--dark .sub, .section--charcoal .sub { color: var(--c-muted-dark); }
+.center { text-align: center; }
+
+/* ---- buttons ---- */
+.btn-gold, .btn-ghost {
+  display: inline-flex; align-items: center; gap: .9rem;
+  padding: .95rem 1.7rem; border-radius: var(--radius);
+  font-size: .72rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase;
+  border: 1px solid var(--c-gold); cursor: pointer;
+  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+.btn-gold { background: var(--c-gold); color: var(--c-black); }
+.btn-gold:hover { background: var(--c-gold-light); border-color: var(--c-gold-light); color: var(--c-black); }
+.btn-ghost { background: transparent; color: var(--c-white); }
+.btn-ghost:hover { background: var(--c-gold); color: var(--c-black); }
+.btn-gold svg, .btn-ghost svg { width: 18px; height: 10px; transition: transform var(--dur-fast) var(--ease); }
+.btn-gold:hover svg, .btn-ghost:hover svg { transform: translateX(5px); }
+
+/* ---- scroll reveal (activated by js/motion.js) ---- */
+.js .reveal {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease);
+  transition-delay: calc(var(--i, 0) * 110ms);
+}
+.js .reveal.in { opacity: 1; transform: none; }
+
+/* heading text rises out of a mask */
+.js .split { display: block; overflow: hidden; padding-bottom: .12em; margin-bottom: -.12em; }
+.js .split > span { display: block; transform: translateY(110%); transition: transform 1s var(--ease); transition-delay: calc(var(--i, 0) * 110ms); }
+.js .split.in > span { transform: none; }
+
+/* thin gold line draws itself */
+.js .rule.reveal { opacity: 1; transform: scaleX(0); transition: transform 1.1s var(--ease) .25s; }
+.js .rule.reveal.in { transform: scaleX(1); }
+
+/* image wipes open, then settles (the wrapper is watched, the picture inside is clipped) */
+.js .reveal-img img { clip-path: inset(0 0 100% 0); transform: scale(1.2); transition: clip-path 1.2s var(--ease), transform 1.6s var(--ease); transition-delay: calc(var(--i, 0) * 130ms); }
+.js .reveal-img.in img { clip-path: inset(0 0 0 0); transform: scale(1); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .js .reveal, .js .split > span, .js .reveal-img img, .js .rule.reveal { opacity: 1 !important; transform: none !important; clip-path: none !important; }
+}
