@@ -11,9 +11,9 @@
       "line": "Complications and fine finishing."
     },
     {
-      "id": "sport",
-      "name": "Sport & Dive",
-      "line": "Built for water, trails and speed."
+      "id": "smart",
+      "name": "Smart Watches",
+      "line": "Sensors and screens, made slim."
     }
   ],
   "watches": [
@@ -87,7 +87,7 @@
       "name": "Sovereign Skeleton",
       "lineup": "luxury",
       "price": 18750,
-      "featured": false,
+      "featured": true,
       "description": "An open-worked movement you can watch run. Every bridge is cut and polished by hand.",
       "year": "2024",
       "movement": "Manual wind",
@@ -96,43 +96,43 @@
       "image": "assets/img/watches/sovereign-skeleton.svg"
     },
     {
-      "id": "abyss-diver-300",
-      "name": "Abyss Diver 300",
-      "lineup": "sport",
-      "price": 1350,
+      "id": "pulse-one",
+      "name": "Pulse One",
+      "lineup": "smart",
+      "price": 399,
       "featured": true,
-      "description": "A dive watch rated to 300 metres with a deep blue dial and a screw-down crown.",
-      "year": "2025",
-      "movement": "Automatic",
-      "case": "42 mm, steel",
-      "water": "300 m",
-      "image": "assets/img/watches/abyss-diver-300.svg"
+      "description": "An everyday smartwatch with a bright round display, heart-rate tracking and a five-day battery.",
+      "year": "2026",
+      "movement": "Digital, Bluetooth",
+      "case": "42 mm, aluminium",
+      "water": "50 m",
+      "image": "assets/img/watches/pulse-one.svg"
     },
     {
-      "id": "solar-trail",
-      "name": "Solar Trail",
-      "lineup": "sport",
-      "price": 420,
+      "id": "pulse-pro-titanium",
+      "name": "Pulse Pro Titanium",
+      "lineup": "smart",
+      "price": 749,
+      "featured": true,
+      "description": "A titanium smartwatch with sapphire glass, GPS and a full set of health sensors.",
+      "year": "2026",
+      "movement": "Digital, GPS",
+      "case": "44 mm, titanium",
+      "water": "100 m",
+      "image": "assets/img/watches/pulse-pro-titanium.svg"
+    },
+    {
+      "id": "nova-lite",
+      "name": "Nova Lite",
+      "lineup": "smart",
+      "price": 179,
       "featured": false,
-      "description": "A rugged field watch that charges from light, so it never needs a battery change.",
-      "year": "2025",
-      "movement": "Solar quartz",
-      "case": "43 mm, resin",
-      "water": "100 m",
-      "image": "assets/img/watches/solar-trail.svg"
-    },
-    {
-      "id": "velocity-racer",
-      "name": "Velocity Racer",
-      "lineup": "sport",
-      "price": 890,
-      "featured": true,
-      "description": "A racing chronograph with a red bezel and bold subdials. Quick to read at speed.",
-      "year": "2025",
-      "movement": "Quartz chronograph",
-      "case": "44 mm, steel",
-      "water": "100 m",
-      "image": "assets/img/watches/velocity-racer.svg"
+      "description": "A light, slim smartwatch for steps, sleep and notifications at a friendly price.",
+      "year": "2026",
+      "movement": "Digital, Bluetooth",
+      "case": "38 mm, polymer",
+      "water": "30 m",
+      "image": "assets/img/watches/nova-lite.svg"
     }
   ]
 }

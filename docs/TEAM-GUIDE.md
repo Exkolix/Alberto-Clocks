@@ -27,9 +27,9 @@
 
 ## 4. Hooks (so Obash's JavaScript can plug in later)
 Add these ids/attributes to your markup. They do nothing visually.
-- **Products:** grid `id="productGrid"`; line-up checkboxes `data-line="vintage|luxury|sport"`; `id="priceRange"`; `id="sortBy"`. Draw 4 example `.watch-card`s so we see the layout.
+- **Products:** grid `id="productGrid"`; line-up checkboxes `data-line="vintage|luxury|smart"`; `id="priceRange"`; `id="sortBy"`. Draw 4 example `.watch-card`s so we see the layout.
 - **Price List:** `<table class="table-lux" id="priceTable">`, rows `<tr data-watch="heritage-1962-chronograph">`; line-up tabs with `data-line`; search `id="priceSearch"`.
-- **Technology:** each topic `<article class="tech-item" data-key="mechanical">` (mechanical, automatic, quartz, solar).
+- **Technology:** each topic `<article class="tech-item" data-key="mechanical">` (mechanical, automatic, quartz, solar, smart-sensors).
 - **Gallery:** each image `<a class="g-item" data-full="assets/img/gallery/g1.svg"><img ...></a>`.
 - **Store Locator + Contact:** city tabs with `.nav-lux` (Abuja, Lagos, Port Harcourt); map box `id="storeMap"`; form `id="contactForm"` using `.field`.
 - **Support:** Bootstrap accordion with `.accordion-lux`; services block `id="services"`.
