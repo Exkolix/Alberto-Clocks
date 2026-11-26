@@ -1,5 +1,6 @@
 /* SCROLL MOTION (owner: Obash)
    1. Reveal   - .reveal / .reveal-img / .reveal-seq / .split animate in once when they enter the screen
+                 (inside a [data-play-in-view] block they wait and play together once it is ~60% in view)
    2. Parallax - [data-parallax] images drift at a different speed from the page
    3. Stage    - hero + collections share one video: as you scroll it DIMS, then PAUSES
    4. Scene    - "Our Collections" is a pinned scroll scene in TWO PARTS that follows the scrollbar both ways:
@@ -12,7 +13,7 @@ window.AW = window.AW || {};
 
 AW.motion = (function () {
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var io = null, parallax = [], stage = {}, scene = {}, ticking = false, bar = null, header = null;
+  var io = null, io2 = null, parallax = [], stage = {}, scene = {}, ticking = false, bar = null, header = null;
   var DIM_DONE = 0.85;          // how far through the dim the video counts as "dimmed and paused"
 
   // the scene: part 1 = heading alone (follows the scroll a little), part 2 = ONE timed step at STEP
@@ -28,15 +29,29 @@ AW.motion = (function () {
   function refresh(root) {
     root = root || document;
     if (io) io.disconnect();
-    var els = Array.prototype.slice.call(root.querySelectorAll('.reveal, .reveal-img, .reveal-seq, .split'));
+    if (io2) io2.disconnect();
+    var all = Array.prototype.slice.call(root.querySelectorAll('.reveal, .reveal-img, .reveal-seq, .split'));
+    // [data-play-in-view]: everything inside waits and plays together once the block is (nearly) fully on screen
+    var held = Array.prototype.slice.call(root.querySelectorAll('[data-play-in-view]'));
+    var els = all.filter(function (e) { return !held.some(function (h) { return h.contains(e); }); });
 
     stage = { hero: root.querySelector('[data-hero]'), content: root.querySelector('[data-hero-content]'), cue: root.querySelector('.hero-cue'),
               dim: root.querySelector('[data-stage-dim]'), video: root.querySelector('.hero-video'), pausedByUs: false };
 
     if (reduced || !('IntersectionObserver' in window)) {
-      els.forEach(show);
+      all.forEach(show);
       if (stage.dim) stage.dim.style.opacity = '0.6';
     } else {
+      // full-view trigger: 60% of the block visible, or the block fills 60% of the screen height (phones, where it is taller)
+      io2 = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          var rb = en.rootBounds, tall = rb && en.intersectionRect.height >= rb.height * 0.6;
+          if (!en.isIntersecting || (en.intersectionRatio < 0.6 && !tall)) return;
+          io2.unobserve(en.target);
+          Array.prototype.slice.call(en.target.querySelectorAll('.reveal, .reveal-img, .reveal-seq, .split')).forEach(show);
+        });
+      }, { threshold: [0, 0.2, 0.4, 0.6, 0.8, 1] });
+      held.forEach(function (h) { if (!h.querySelector('.reveal-seq.in')) io2.observe(h); });
       io = new IntersectionObserver(function (entries) {
         entries.forEach(function (en) {
           if (!en.isIntersecting) return;

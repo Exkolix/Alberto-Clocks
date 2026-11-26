@@ -9,7 +9,8 @@ A quiet gallery for fine watches. Dark rooms for photos, ivory rooms for reading
 1. **Dark for photo screens, ivory for reading screens.** Products, Gallery, Price List = dark. About, Support, Contact, Site Map = ivory (mix is fine, alternate sections).
 2. **Gold is the only accent** (`var(--c-gold)`): prices, thin lines, hover, active tab, the ONE main button. Steel blue is only for tiny focus highlights.
 3. **Very little text.** One short line per card. Details appear on click (popup, accordion, tab).
-4. **One font**: Montserrat. Headings Light, UPPERCASE, wide spacing. Body 14px desktop, 16px phone.
+4. **Two fonts**: Montserrat is the main one. Headings Light, UPPERCASE, wide spacing. Body 14px desktop, 16px phone. Cormorant Garamond Italic (`var(--font-display)`) only for ONE accent word in a heading: `Our <em>Services</em>` inside `.title`. Never body text.
+   Text links: `<a class="link-line">Discover more</a>` (a gold line, then the word). Use it for "Discover more" / "Learn more"; `.btn-gold` stays for the one main button per screen.
 5. **Corners 6px or less. Thin 1px lines.** No heavy shadows, no gradients on buttons.
 6. **Use the variables.** `var(--c-gold)`, never `#C9A25A`. Use `.wrap`, `.section--dark`, `.section--ivory`, `.title`, `.btn-gold` etc. from `docs/style-guide.html`.
 

@@ -9,10 +9,10 @@ AW.home = (function () {
       var list = d.watches.filter(function (w) { return w.featured; });
       var $row = $('#featuredRow');
       $row.html(list.map(function (w, i) {
-        return '<article class="fcard reveal-seq" style="--i:' + (i % 3) + '">' +
+        return '<article class="fcard reveal-seq" style="--i:' + (i % 4) + '">' +
           '<a class="watch-card" href="#/products?line=' + w.lineup + '" data-watch="' + w.id + '">' +
           '<div class="watch-img"><img src="' + w.image + '" alt="' + esc(w.name) + '" loading="lazy"></div>' +
-          '<div class="watch-text"><h3 class="watch-name">' + esc(w.name) + '</h3><p class="watch-desc">' + esc(w.description) + '</p></div>' +
+          '<div class="watch-text"><h3 class="watch-name">' + esc(w.name) + '</h3><p class="watch-desc">' + esc(w.description) + '</p><span class="link-line">Discover more</span></div>' +
           '</a></article>';
       }).join(''));
 

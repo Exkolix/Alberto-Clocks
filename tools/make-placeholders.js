@@ -111,4 +111,30 @@ let ticks = '';
 for (let i = 0; i < 72; i++) { const a = Math.PI + (i / 72) * Math.PI, big = i % 6 === 0; ticks += `<line x1="${960 + Math.cos(a) * 1180}" y1="${1180 + Math.sin(a) * 1180}" x2="${960 + Math.cos(a) * (1180 - (big ? 60 : 28))}" y2="${1180 + Math.sin(a) * (1180 - (big ? 60 : 28))}" stroke="#C9A25A" stroke-opacity=".35" stroke-width="${big ? 3 : 1.5}"/>`; }
 out('misc/backdrop.svg', svg(1920, 1080, `<ellipse cx="960" cy="1080" rx="1100" ry="520" fill="#C9A25A" opacity=".10" filter="url(#blur)"/>${rings}${ticks}`, ['#2a2016', '#060505']));
 
+// Services: four editorial scenes. Lighter and warmer than the watch art so the Services row brings colour.
+const paper = (w, h) => { let l = ''; for (let y = 120; y < h; y += 46) l += `<line x1="70" y1="${y}" x2="${w - 70}" y2="${y}" stroke="#1E1712" stroke-opacity=".10"/>`; return l; };
+// Repair: warm walnut bench, brass gears, a screwdriver
+out('services/repair.svg', svg(800, 1000,
+  gear(300, 360, 230, 24, '#d9b979', 6) + gear(590, 640, 160, 18, '#C9A25A', 5) + gear(210, 760, 100, 12, '#e8e2d0', 4) +
+  `<rect x="420" y="170" width="26" height="400" rx="6" fill="#e8e2d0" opacity=".85" transform="rotate(28 433 370)"/><rect x="396" y="520" width="74" height="190" rx="22" fill="#8e2e2e" opacity=".9" transform="rotate(28 433 615)"/>`,
+  ['#7a5434', '#241709']));
+// Appraisal: ivory paper, a loupe over a watch face
+out('services/appraisal.svg', svg(800, 1000,
+  paper(800, 1000) + watch({ cx: 400, cy: 470, r: 170, face: '#2b2b33', rim: '#C9A25A', strap: '#2b1f18', subdials: true }) +
+  `<circle cx="470" cy="420" r="230" fill="#fff" fill-opacity=".10" stroke="#1E1712" stroke-width="22"/><line x1="636" y1="584" x2="760" y2="760" stroke="#1E1712" stroke-width="40" stroke-linecap="round"/>`,
+  ['#f4eedf', '#b9ac90']));
+// Servicing: steel-blue, balance wheel and hairspring
+let spiral = ''; for (let i = 0; i < 260; i++) { const a = i * 0.16, rr = 14 + i * 0.95; spiral += (i ? 'L' : 'M') + (400 + Math.cos(a) * rr).toFixed(1) + ' ' + (470 + Math.sin(a) * rr).toFixed(1); }
+out('services/servicing.svg', svg(800, 1000,
+  `<circle cx="400" cy="470" r="290" fill="none" stroke="#e8e2d0" stroke-width="14" opacity=".9"/><circle cx="400" cy="470" r="250" fill="none" stroke="#C9A25A" stroke-width="3"/>` +
+  `<path d="${spiral}" fill="none" stroke="#e8e2d0" stroke-width="3" opacity=".8"/><line x1="110" y1="470" x2="690" y2="470" stroke="#e8e2d0" stroke-width="10" opacity=".9"/><circle cx="400" cy="470" r="22" fill="#C9A25A"/>` +
+  `<path d="M400 790c-34-48-52-78-52-104a52 52 0 01104 0c0 26-18 56-52 104z" fill="#C9A25A" opacity=".95"/>`,
+  ['#86aabd', '#243642']));
+// Retail: pale stone display, a plinth with a watch on it
+out('services/retail.svg', svg(800, 1000,
+  `<rect x="60" y="80" width="680" height="840" fill="none" stroke="#1E1712" stroke-opacity=".18" stroke-width="3"/><line x1="400" y1="80" x2="400" y2="920" stroke="#1E1712" stroke-opacity=".12" stroke-width="2"/>` +
+  `<rect x="190" y="700" width="420" height="220" fill="#8b8576"/><rect x="190" y="700" width="420" height="22" fill="#b9b2a2"/>` +
+  watch({ cx: 400, cy: 490, r: 150, face: '#f2ead8', rim: '#c9a25a', strap: '#232020', hands: '#222' }),
+  ['#e2ddd2', '#9a9383']));
+
 console.log('placeholders written');

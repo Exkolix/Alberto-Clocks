@@ -27,7 +27,7 @@
     <div class="collections-pin" data-scene-pin>
       <div class="wrap">
         <div class="center collections-head" data-scene-head>
-          <h2 class="title">Our Collections</h2>
+          <h2 class="title">Our <em>Collections</em></h2>
           <span class="rule"></span>
           <p class="sub">Three ways to tell time</p>
         </div>
@@ -51,8 +51,8 @@
 </div>
 
 <!-- 3. FEATURED WATCHES: carousel. Cards are drawn by js/home.js from data/watches.json (watches marked "featured") -->
-<section class="section section--deep section--void">
-  <div class="wrap featured-grid">
+<section class="section section--deep section--void snap-soft">
+  <div class="wrap featured-grid" data-play-in-view>
     <div class="featured-head">
       <h2 class="featured-title"><span class="split"><span>Featured</span></span><span class="split" style="--i:1"><span><em>Watches</em></span></span></h2>
       <span class="featured-line reveal"></span>
@@ -64,8 +64,7 @@
           <button class="car-btn" id="fPrev" type="button" aria-label="Previous watches"><svg viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M18 5H2M6 1L2 5l4 4"/></svg></button>
           <button class="car-btn" id="fNext" type="button" aria-label="Next watches"><svg viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 5h16M12 1l4 4-4 4"/></svg></button>
         </div>
-        <a class="btn-gold" href="#/products">Discover
-          <svg viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 5h16M12 1l4 4-4 4"/></svg></a>
+        <a class="link-line" href="#/products">Discover more</a>
       </div>
     </div>
   </div>
@@ -77,38 +76,34 @@
     <div class="services-head">
       <div>
         <p class="eyebrow reveal">What we do</p>
-        <h2 class="title split"><span>Our Services</span></h2>
+        <h2 class="title split"><span>Our <em>Services</em></span></h2>
       </div>
       <p class="services-intro reveal" style="--i:1">From a battery change to a full restoration, every watch is looked after at our own workshop.</p>
     </div>
     <div class="svc-grid">
       <a class="svc-card reveal reveal--up" style="--i:0" href="#/support?section=services">
-        <div class="svc-top"><span>Service 01</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M18.7 5.3l-2.1 2.1M7.4 16.6l-2.1 2.1"/></svg></div>
+        <div class="svc-img"><img src="assets/img/services/repair.svg" alt="A watchmaker's bench with brass gears" loading="lazy"></div>
         <h3>Repair</h3>
         <p>Movements serviced, cases restored and crystals replaced.</p>
-        <div class="svc-foot"><span>Learn more</span><svg viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 5h16M12 1l4 4-4 4"/></svg></div>
+        <span class="link-line">Discover more</span>
       </a>
       <a class="svc-card reveal reveal--up" style="--i:1" href="#/support?section=services">
-        <div class="svc-top"><span>Service 02</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg></div>
+        <div class="svc-img"><img src="assets/img/services/appraisal.svg" alt="A loupe held over a watch face" loading="lazy"></div>
         <h3>Appraisal</h3>
         <p>A clear written valuation for insurance, resale or peace of mind.</p>
-        <div class="svc-foot"><span>Learn more</span><svg viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 5h16M12 1l4 4-4 4"/></svg></div>
+        <span class="link-line">Discover more</span>
       </a>
       <a class="svc-card reveal reveal--up" style="--i:2" href="#/support?section=services">
-        <div class="svc-top"><span>Service 03</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.4 6 10.5a6 6 0 01-12 0C6 9.400 12 3 12 3z"/></svg></div>
+        <div class="svc-img"><img src="assets/img/services/servicing.svg" alt="A balance wheel and hairspring" loading="lazy"></div>
         <h3>Servicing</h3>
         <p>Cleaning, lubrication and water-resistance testing to keep a watch running well.</p>
-        <div class="svc-foot"><span>Learn more</span><svg viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 5h16M12 1l4 4-4 4"/></svg></div>
+        <span class="link-line">Discover more</span>
       </a>
       <a class="svc-card reveal reveal--up" style="--i:3" href="#/products">
-        <div class="svc-top"><span>Service 04</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6.5a3 3 0 016 0V8"/></svg></div>
+        <div class="svc-img"><img src="assets/img/services/retail.svg" alt="A watch on a plinth in a display window" loading="lazy"></div>
         <h3>Retail</h3>
         <p>New and pre-owned watches from our three collections.</p>
-        <div class="svc-foot"><span>Browse watches</span><svg viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 5h16M12 1l4 4-4 4"/></svg></div>
+        <span class="link-line">Browse watches</span>
       </a>
     </div>
   </div>
