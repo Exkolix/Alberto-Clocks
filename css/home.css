@@ -70,7 +70,7 @@
 .carousel::-webkit-scrollbar { display: none; }
 .fcard { flex: 0 0 calc((100% - 3 * var(--gap)) / 3.25); scroll-snap-align: start; min-width: 0; }
 .watch-card { display: block; color: inherit; }
-.watch-img { aspect-ratio: 4 / 5; overflow: hidden; background: var(--c-charcoal); border-radius: var(--radius); }
+.watch-img { aspect-ratio: 4 / 5; overflow: hidden; background: #0A0A0A; border-radius: var(--radius); }
 .watch-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.1s var(--ease); }
 .watch-card:hover .watch-img img { transform: scale(1.06); }
 .watch-name { margin-top: 1.2rem; font-size: .95rem; font-weight: 600; line-height: 1.4; display: inline-block; background: linear-gradient(var(--c-gold), var(--c-gold)) 0 100% / 0 1px no-repeat; transition: background-size .5s var(--ease); }
@@ -128,6 +128,7 @@
 /* deepest black: used by Services and Gallery so the photo colours stand out */
 .section--deep { background: #050505; color: var(--c-white); }
 .section--deep .sub { color: var(--c-muted-dark); }
+.section--void { background: #000; }   /* Featured: darkest, so the watch photos on dark backgrounds blend in */
 
 /* ---------- 6. Gallery teaser (no animation) ---------- */
 .parallax-img { position: absolute; left: 0; top: -9%; width: 100%; height: 118%; object-fit: cover; will-change: transform; }
