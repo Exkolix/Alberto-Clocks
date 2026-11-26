@@ -12,7 +12,7 @@ AW.home = (function () {
         return '<article class="fcard reveal-seq" style="--i:' + (i % 4) + '">' +
           '<a class="watch-card" href="#/products?line=' + w.lineup + '" data-watch="' + w.id + '">' +
           '<div class="watch-img"><img src="' + w.image + '" alt="' + esc(w.name) + '" loading="lazy"></div>' +
-          '<div class="watch-text"><h3 class="watch-name">' + esc(w.name) + '</h3><p class="watch-desc">' + esc(w.description) + '</p><span class="link-line">Discover more</span></div>' +
+          '<div class="watch-text"><h3 class="watch-name">' + esc(w.name) + '</h3><p class="watch-desc">' + esc(w.description) + '</p></div>' +
           '</a></article>';
       }).join(''));
 

@@ -17,8 +17,8 @@ AW.motion = (function () {
   var DIM_DONE = 0.85;          // how far through the dim the video counts as "dimmed and paused"
 
   // the scene: part 1 = heading alone (follows the scroll a little), part 2 = ONE timed step at STEP
-  var HEAD_IN = [0.00, 0.30];   // part 1: heading fades in
-  var STEP = 0.40;              // scroll position (0..1 of the pinned scroll) where part 2 plays
+  var HEAD_IN = [0.00, 0.21];   // part 1: heading fades in (pinned scroll is 112vh long, so this is about the first 23vh)
+  var STEP = 0.29;              // scroll position (0..1 of the pinned scroll) where part 2 plays, about 32vh in; the rest is a rest before Featured
   var CARD_START = 0.32, CARD_GAP = 0.13, CARD_LEN = 0.24;   // only used when NOT pinned (phones)
 
   function show(el) { el.classList.add('in'); }
@@ -80,6 +80,7 @@ AW.motion = (function () {
     // how far the heading must sit below its final spot so that it starts in the middle of the screen
     var centre = scene.head.offsetTop + scene.head.offsetHeight / 2;
     scene.drop = Math.max(0, scene.pin.clientHeight / 2 - centre);
+    scene.cardDrop = scene.pin.clientHeight + 40;   // far enough that a card starts fully below the pin (which clips it)
   }
 
   function put(el, u, rise) {          // u: 0..1 progress, rise: how far (px) it starts below its place
@@ -107,8 +108,8 @@ AW.motion = (function () {
       for (i = 0; i < scene.cards.length; i++) {
         var c = scene.cards[i];
         c.style.setProperty('--ci', i);
-        c.style.opacity = on ? 1 : 0;
-        c.style.transform = 'translate3d(0,' + (on ? 0 : 150) + 'px,0)';
+        c.style.opacity = 1;                       // no fade: the card is simply below the pin until it slides up
+        c.style.transform = 'translate3d(0,' + (on ? 0 : scene.cardDrop) + 'px,0)';
         c.style.pointerEvents = on ? 'auto' : 'none';
       }
     } else {
