@@ -128,7 +128,7 @@
 
 /* ---------- Ticker ---------- */
 .ticker {
-  position: fixed; left: 0; right: 0; bottom: 0; z-index: 1020; height: var(--ticker-h);          /* always visible at the bottom of the screen */
+  position: relative; width: 100%; height: var(--ticker-h);          /* sits at the very bottom of the footer, scrolls with the page */
   background: var(--c-black); border-top: 1px solid var(--c-line-dark); overflow: hidden; display: flex; align-items: center;
 }
 .ticker-track { display: flex; width: max-content; animation: ticker 55s linear infinite; will-change: transform; }

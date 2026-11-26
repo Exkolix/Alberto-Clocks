@@ -28,7 +28,7 @@ Gallery-like luxury: dark for photo screens, ivory for reading screens. Montserr
 Photo goal: real photos should bring colour in some places (Collections, Services, Gallery, window); Featured uses watch photos on dark backgrounds.
 
 ## Done (Home + shell), owner Obash
-- Header (hamburger, logo, price-list/store icons, visitor count), hamburger menu (desktop hover sub panel on ivory; Collections shows a tile mosaic: Luxury tall, Vintage and Smart stacked), footer, **fixed ticker** at the bottom, watch popup (Bootstrap modal).
+- Header (hamburger, logo, price-list/store icons, visitor count), hamburger menu (desktop hover sub panel on ivory; Collections shows a tile mosaic: Luxury tall, Vintage and Smart stacked), footer, **ticker at the very bottom of the footer (not fixed)**, watch popup (Bootstrap modal).
 - Home: sticky shared hero/collections video stage that dims then pauses; Our Collections is a pinned **one-step** scene (heading first, then 3 cards slide up one after another, reversible); Featured carousel (6 watches, no prices, arrows + swipe, one-time load animation); Services (hairline row, deep black); fixed "window" photo section; Gallery teaser (5-tile bento, no animation).
 - Motion lives in `js/motion.js` (reveals, parallax, stage, scene, header progress line). Respects reduced motion.
 - Removed by decision: Sport & Dive collection (and its watches).
