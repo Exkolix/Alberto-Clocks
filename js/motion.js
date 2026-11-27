@@ -5,7 +5,7 @@
    3. Stage    - hero + collections share one video: as you scroll it DIMS, then PAUSES
    4. Scene    - "Our Collections" (desktop only) is pinned on the dimmed video. At STEP the heading fades in and the 3 cards
                  slide up from the bottom (timed in home.css: ease-out, cards 1 and 2 together, 3 a touch later).
-                 Near the end of the pinned scroll everything fades away (EXIT). Scrolling back up reverses it.
+                 It then simply stays pinned until the scroll is used up and scrolls away normally. Scrolling back up reverses it.
                  On phones and short screens there is NO animation: the section is static.
    5. Progress - the thin gold line under the header fills as you scroll
    Everything switches off if the visitor has "reduce motion" set in their system. */
@@ -18,7 +18,6 @@ AW.motion = (function () {
 
   // the scene: the pinned scroll is 104vh long (css .collections height = stage + 104vh)
   var STEP = 0.135;             // where the heading fades in and the cards slide up, about 14vh into the pinned scroll
-  var EXIT = [0.77, 1.0];       // the last ~24vh: the whole scene fades away before the pin lets go
 
   function show(el) { el.classList.add('in'); }
   function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
@@ -68,7 +67,6 @@ AW.motion = (function () {
     scene = { el: root.querySelector('[data-scene]') };
     if (!scene.el) return;
     scene.pin = scene.el.querySelector('[data-scene-pin]');
-    scene.wrap = scene.pin.querySelector('.wrap');
     scene.head = scene.el.querySelector('[data-scene-head]');
     scene.cards = Array.prototype.slice.call(scene.el.querySelectorAll('[data-scene-card]'));
     measureScene();
@@ -85,11 +83,10 @@ AW.motion = (function () {
     if (reduced || !scene.pinned) {
       // phones, short screens, reduced motion: no animation at all, the section is simply there
       scene.head.style.opacity = ''; scene.head.style.transform = '';
-      scene.wrap.style.opacity = ''; scene.wrap.style.pointerEvents = '';
       scene.cards.forEach(function (c) { c.style.opacity = ''; c.style.transform = ''; c.style.pointerEvents = ''; });
       return;
     }
-    // ----- pinned (desktop): one step at STEP, a fade-out at the end, both driven by how far we have scrolled -----
+    // ----- pinned (desktop): one step at STEP, driven by how far we have scrolled -----
     var r = scene.el.getBoundingClientRect();
     var range = r.height - scene.pin.offsetHeight;
     var t = range > 0 ? clamp((hdr - r.top) / range) : 1;
@@ -101,9 +98,6 @@ AW.motion = (function () {
       c.style.transform = 'translate3d(0,' + (on ? 0 : scene.cardDrop) + 'px,0)';
       c.style.pointerEvents = on ? 'auto' : 'none';
     }
-    var fade = 1 - span(t, EXIT[0], EXIT[1]);   // leaving: everything fades away
-    scene.wrap.style.opacity = fade.toFixed(3);
-    scene.wrap.style.pointerEvents = fade < 0.3 ? 'none' : '';
   }
 
   function update() {

@@ -30,7 +30,7 @@
 @keyframes cue { from { transform: translateY(-100%); } to { transform: translateY(260%); } }
 
 /* ---------- 2. Our Collections: pinned scroll scene on the dimmed video ---------- */
-.collections { position: relative; z-index: 1; background: transparent; color: var(--c-white); height: calc(var(--stage-h) + 104vh); }   /* the extra 104vh is the pinned scroll: ~14vh until the scene plays, a long rest, then the last ~24vh it fades away */
+.collections { position: relative; z-index: 1; background: transparent; color: var(--c-white); height: calc(var(--stage-h) + 104vh); }   /* the extra 104vh is the pinned scroll: ~14vh until the scene plays, then a long rest while it stays pinned */
 .collections-pin { position: sticky; top: var(--header-h); height: var(--stage-h); display: flex; align-items: center; padding: 0 var(--gutter); }
 .collections.is-pinned .collections-pin { overflow: hidden; }   /* cards start below the pin and are cut off there, so they slide up from the bottom edge */
 .collections-pin .wrap { width: 100%; }

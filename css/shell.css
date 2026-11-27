@@ -90,18 +90,20 @@
   .menu-sub {
     position: absolute; left: 100%; top: 0; bottom: 0; width: min(34vw, 540px);
     max-height: none; overflow-y: auto; background: #EEE7D6; border-left: 1px solid var(--c-line-light);
-    opacity: 0; visibility: hidden; transition: none;
+    opacity: 0; visibility: hidden; transition: none; clip-path: inset(0 0 0 0);
   }
   /* first hover: the panel fades in. Moving to another word: the panel stays exactly where it is (no sliding, no bouncing)
      and only its content is drawn again with a fade down. js/menu.js adds .is-switching to .menu for that case. */
-  .menu-item.is-open > .menu-sub { max-height: none; opacity: 1; visibility: visible; animation: subPanel .35s var(--ease) both; }
+  .menu-item.is-open > .menu-sub { max-height: none; opacity: 1; visibility: visible; animation: subPanel .6s var(--ease-out) both; }
   .menu.is-switching .menu-item.is-open > .menu-sub { animation: none; }
-  .menu-item.is-open > .menu-sub .menu-sub-inner { animation: subDown .65s var(--ease-out) .05s both; }
+  .menu-item.is-open > .menu-sub .menu-sub-inner { animation: subDown .65s var(--ease-out) .3s both; }   /* after the panel has extended */
+  .menu.is-switching .menu-item.is-open > .menu-sub .menu-sub-inner { animation-delay: .05s; }
   .menu-sub-inner { padding: 6.5rem clamp(1.5rem, 3vw, 3rem) 2rem; }
   .menu-links a { font-size: 1.15rem; font-weight: 300; }
 }
 
-@keyframes subPanel { from { opacity: 0; } to { opacity: 1; } }
+/* the grey panel EXTENDS out of the ivory one, left to right */
+@keyframes subPanel { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
 @keyframes subDown { from { opacity: 0; transform: translateY(-18px); } to { opacity: 1; transform: none; } }
 
 /* photo tiles (Collections only) */
