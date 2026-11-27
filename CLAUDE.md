@@ -30,12 +30,13 @@ Photo goal: real photos should bring colour in some places (Collections, Service
 ## Done (Home + shell), owner Obash
 - Header (hamburger, logo, price-list/store icons, visitor count), hamburger menu (desktop hover sub panel on ivory; Collections shows a tile mosaic: Luxury tall, Vintage and Smart stacked), footer, **ticker at the very bottom of the footer (not fixed)**, watch popup (Bootstrap modal).
 - Home: sticky shared hero/collections video stage that dims then pauses; Our Collections is a pinned **one-step** scene (heading first, then 3 cards slide up one after another, reversible); Featured carousel (6 watches, no prices, arrows + swipe, one-time load animation); Services (hairline row, deep black); fixed "window" photo section; Gallery teaser (5-tile bento, no animation).
+- **Products** (`#/products`, built by Obash/Claude, Nov 27): dark screen, left sidebar filters (collection checkboxes, log-scale price slider, clear), sort, 3-col grid (2 on tablet/phone, filters collapse to a "Filters" button under 992px), card = photo + name + gold price, click opens the shared popup. Files: `views/products.html`, `css/products.css`, `js/products.js`. `?line=a,b` preselects and stays in sync via `history.replaceState`.
 - Motion lives in `js/motion.js` (reveals, parallax, stage, scene, header progress line). Respects reduced motion.
 - Removed by decision: Sport & Dive collection (and its watches).
 
 ## Pending
 - Menu check on phone; phone and Firefox/Edge visual checks; real `hero.mp4`; real photos (one batch swap); Services photos (undecided).
-- Screens still to build (routes exist, show "Coming soon"): products, price-list, technology, gallery, store-locator (+contact), support (+services), about, sitemap. Watch popup is a shared component.
+- Screens still to build (routes exist, show "Coming soon"): price-list, technology, gallery, store-locator (+contact), support (+services), about, sitemap. Watch popup is a shared component.
 - Reports, diagrams, ReadMe.doc, demo video, final zip.
 
 ## Team and ownership

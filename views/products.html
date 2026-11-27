@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="css/products.css">
+
+<section class="page-head">
+  <h1 class="title split"><span>Our <em>Watches</em></span></h1>
+  <span class="rule reveal"></span>
+  <p class="sub reveal" style="--i:1" id="prodSub">All collections</p>
+</section>
+
+<section class="section section--dark prod-section">
+  <div class="wrap prod-layout">
+
+    <!-- Filters: left sidebar on desktop, a "Filters" button on phones -->
+    <aside class="pf" aria-label="Filters">
+      <button class="pf-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#pfBody" aria-expanded="false" aria-controls="pfBody">
+        <span>Filters</span>
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M6 1v10M1 6h10"/></svg>
+      </button>
+
+      <div class="pf-body collapse" id="pfBody">
+        <fieldset class="pf-group">
+          <legend class="pf-label">Collection</legend>
+          <label class="pf-check check-lux"><input class="form-check-input" type="checkbox" data-line="vintage"><span>Vintage</span></label>
+          <label class="pf-check check-lux"><input class="form-check-input" type="checkbox" data-line="luxury"><span>Luxury</span></label>
+          <label class="pf-check check-lux"><input class="form-check-input" type="checkbox" data-line="smart"><span>Smart Watches</span></label>
+        </fieldset>
+
+        <div class="pf-group">
+          <label class="pf-label" for="priceRange">Price</label>
+          <input type="range" id="priceRange" min="0" max="100" step="1" value="100">
+          <p class="pf-out" id="priceOut" aria-live="polite">All prices</p>
+        </div>
+
+        <button class="pf-reset link-line" type="button" id="pfReset">Clear filters</button>
+      </div>
+    </aside>
+
+    <!-- Results -->
+    <div class="prod-main">
+      <div class="prod-bar">
+        <p class="prod-count" id="prodCount" aria-live="polite"></p>
+        <div class="prod-sort">
+          <label for="sortBy">Sort</label>
+          <select id="sortBy">
+            <option value="default">Collection</option>
+            <option value="price-asc">Price, low to high</option>
+            <option value="price-desc">Price, high to low</option>
+            <option value="name">Name, A to Z</option>
+          </select>
+        </div>
+      </div>
+      <div class="prod-grid" id="productGrid"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- </body> (keeps VS Code Live Server from cutting this file short; leave it as the last line) -->

@@ -55,7 +55,7 @@ Update your row when you push. Statuses: `Not started`, `In progress`, `Ready fo
 | Screen | Owner | Status | Open it at |
 |---|---|---|---|
 | Home | Obash | Done (v2) | `#/home` |
-| Products | A | Not started | `#/products` |
+| Products | Obash | Done (v1) | `#/products` |
 | Price List | A | Not started | `#/price-list` |
 | Technology | B | Not started | `#/technology` |
 | Gallery | B | Not started | `#/gallery` |
