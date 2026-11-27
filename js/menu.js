@@ -1,5 +1,5 @@
 /* HAMBURGER MENU (owner: Obash)
-   Desktop: hover a main item -> it turns gold + underlined and its sub-links slide out.
+   Desktop: hover a main WORD -> it turns gold + underlined and its panel opens; hovering another word redraws the content with a fade down.
    Mobile / touch: tap a main item -> its sub-links expand below it.
    Also marks the link of the current screen as .active (colour change "after clicking"). */
 window.AW = window.AW || {};
@@ -16,12 +16,14 @@ AW.menu = (function () {
   }
   function close() {
     if (!$menu.hasClass('is-open')) return;
-    $menu.removeClass('is-open').attr('aria-hidden', 'true');
+    $menu.removeClass('is-open is-switching').attr('aria-hidden', 'true');
     $('body').removeClass('menu-open');
     $hb.attr('aria-expanded', 'false');
     setTimeout(function () { $menu.find('.menu-item').removeClass('is-open').find('.menu-top').attr('aria-expanded', 'false'); }, 500);
   }
   function openItem($li) {
+    if ($li.hasClass('is-open')) return;                                  // same word again: nothing changes
+    $menu.toggleClass('is-switching', $menu.find('.menu-item.is-open').length > 0);   // another one was open: keep the panel, redraw its content
     $menu.find('.menu-item').not($li).removeClass('is-open').find('.menu-top').attr('aria-expanded', 'false');
     $li.addClass('is-open').find('.menu-top').attr('aria-expanded', 'true');
   }
@@ -53,7 +55,8 @@ AW.menu = (function () {
       if ($li.hasClass('is-open') && !desktop()) { $li.removeClass('is-open'); $(this).attr('aria-expanded', 'false'); }
       else openItem($li);
     });
-    $menu.on('mouseenter', '.menu-item', function () { if (desktop()) openItem($(this)); });
+    // only the WORD itself reacts to the mouse, not the whole line (the panel stays open until another word is hovered)
+    $menu.on('mouseenter', '.menu-top span', function () { if (desktop()) openItem($(this).closest('.menu-item')); });
     $menu.on('focusin', '.menu-item', function () { if (desktop()) openItem($(this)); });
   }
 

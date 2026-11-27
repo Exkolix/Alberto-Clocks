@@ -30,7 +30,7 @@
 @keyframes cue { from { transform: translateY(-100%); } to { transform: translateY(260%); } }
 
 /* ---------- 2. Our Collections: pinned scroll scene on the dimmed video ---------- */
-.collections { position: relative; z-index: 1; background: transparent; color: var(--c-white); height: calc(var(--stage-h) + 112vh); }   /* the extra 112vh is the pinned scroll: ~32vh to play the scene, then ~80vh of rest before Featured */
+.collections { position: relative; z-index: 1; background: transparent; color: var(--c-white); height: calc(var(--stage-h) + 104vh); }   /* the extra 104vh is the pinned scroll: ~14vh until the scene plays, a long rest, then the last ~24vh it fades away */
 .collections-pin { position: sticky; top: var(--header-h); height: var(--stage-h); display: flex; align-items: center; padding: 0 var(--gutter); }
 .collections.is-pinned .collections-pin { overflow: hidden; }   /* cards start below the pin and are cut off there, so they slide up from the bottom edge */
 .collections-pin .wrap { width: 100%; }
@@ -46,14 +46,15 @@
 .coll-card:hover h3 { color: var(--c-gold); }
 .coll-card:hover h3::after { transform: scaleX(1); }
 .coll-card p { margin-top: .3rem; font-size: .85rem; color: var(--c-muted-dark); }
-/* start hidden; js/motion.js sets opacity + position from the scroll position */
-.js .collections [data-scene-head], .js .collections [data-scene-card] { opacity: 0; }
-/* pinned (desktop): step 2 is a timed animation, not scroll-scrubbed. JS only flips the final values. */
-.collections.is-pinned [data-scene-head] { transition: transform .9s var(--ease-out, cubic-bezier(.22, 1, .36, 1)); }
-/* cards: a clear 1-2-3 slide up from the bottom (no fade), firm start and a short settle, 0.3s apart */
-.collections.is-pinned [data-scene-card] { transition: transform .85s cubic-bezier(.6, 0, .2, 1); transition-delay: calc(var(--ci, 0) * .3s); }
+/* pinned (desktop only): the heading starts hidden and fades in; js/motion.js flips it at the right scroll position. Phones: static, nothing hidden. */
+.js .collections.is-pinned [data-scene-head] { opacity: 0; }
+.collections.is-pinned [data-scene-head] { transition: opacity .9s var(--ease-out); }
+/* cards slide up from the bottom (no fade) with one ease-out. Cards 1 and 2 leave almost together, card 3 a smidge later. */
+.collections.is-pinned [data-scene-card] { transition: transform 1.1s var(--ease-out); transition-delay: var(--d, 0s); }
+.collections.is-pinned [data-scene-card]:nth-child(2) { --d: .08s; }
+.collections.is-pinned [data-scene-card]:nth-child(3) { --d: .24s; }
 
-/* short or narrow screens: no pinning, the same animation just follows each item as it scrolls into view */
+/* short or narrow screens: no pinning and no animation, the section is simply static */
 @media (max-width: 991.98px), (max-height: 639.98px) {
   .collections { height: auto; padding: clamp(4rem, 10vh, 7rem) var(--gutter); }
   .collections-pin { position: static; height: auto; display: block; padding: 0; }

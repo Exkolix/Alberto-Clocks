@@ -3,10 +3,10 @@
                  (inside a [data-play-in-view] block they wait and play together once it is ~60% in view)
    2. Parallax - [data-parallax] images drift at a different speed from the page
    3. Stage    - hero + collections share one video: as you scroll it DIMS, then PAUSES
-   4. Scene    - "Our Collections" is a pinned scroll scene in TWO PARTS that follows the scrollbar both ways:
-                   part 1: the heading appears alone on the dimmed video
-                   part 2: ONE step - the heading moves up and the 3 cards slide in one after another (timed, ease-out)
-                 Scrolling back up reverses it, so it plays every time.
+   4. Scene    - "Our Collections" (desktop only) is pinned on the dimmed video. At STEP the heading fades in and the 3 cards
+                 slide up from the bottom (timed in home.css: ease-out, cards 1 and 2 together, 3 a touch later).
+                 Near the end of the pinned scroll everything fades away (EXIT). Scrolling back up reverses it.
+                 On phones and short screens there is NO animation: the section is static.
    5. Progress - the thin gold line under the header fills as you scroll
    Everything switches off if the visitor has "reduce motion" set in their system. */
 window.AW = window.AW || {};
@@ -16,10 +16,9 @@ AW.motion = (function () {
   var io = null, io2 = null, parallax = [], stage = {}, scene = {}, ticking = false, bar = null, header = null;
   var DIM_DONE = 0.85;          // how far through the dim the video counts as "dimmed and paused"
 
-  // the scene: part 1 = heading alone (follows the scroll a little), part 2 = ONE timed step at STEP
-  var HEAD_IN = [0.00, 0.21];   // part 1: heading fades in (pinned scroll is 112vh long, so this is about the first 23vh)
-  var STEP = 0.29;              // scroll position (0..1 of the pinned scroll) where part 2 plays, about 32vh in; the rest is a rest before Featured
-  var CARD_START = 0.32, CARD_GAP = 0.13, CARD_LEN = 0.24;   // only used when NOT pinned (phones)
+  // the scene: the pinned scroll is 104vh long (css .collections height = stage + 104vh)
+  var STEP = 0.135;             // where the heading fades in and the cards slide up, about 14vh into the pinned scroll
+  var EXIT = [0.77, 1.0];       // the last ~24vh: the whole scene fades away before the pin lets go
 
   function show(el) { el.classList.add('in'); }
   function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
@@ -69,6 +68,7 @@ AW.motion = (function () {
     scene = { el: root.querySelector('[data-scene]') };
     if (!scene.el) return;
     scene.pin = scene.el.querySelector('[data-scene-pin]');
+    scene.wrap = scene.pin.querySelector('.wrap');
     scene.head = scene.el.querySelector('[data-scene-head]');
     scene.cards = Array.prototype.slice.call(scene.el.querySelectorAll('[data-scene-card]'));
     measureScene();
@@ -77,51 +77,33 @@ AW.motion = (function () {
     if (!scene.el) return;
     scene.pinned = getComputedStyle(scene.pin).position === 'sticky';
     scene.el.classList.toggle('is-pinned', scene.pinned);
-    // how far the heading must sit below its final spot so that it starts in the middle of the screen
-    var centre = scene.head.offsetTop + scene.head.offsetHeight / 2;
-    scene.drop = Math.max(0, scene.pin.clientHeight / 2 - centre);
     scene.cardDrop = scene.pin.clientHeight + 40;   // far enough that a card starts fully below the pin (which clips it)
   }
 
-  function put(el, u, rise) {          // u: 0..1 progress, rise: how far (px) it starts below its place
-    el.style.opacity = u.toFixed(3);
-    el.style.transform = 'translate3d(0,' + ((1 - u) * rise).toFixed(1) + 'px,0)';
-    el.style.pointerEvents = u > 0.6 ? 'auto' : 'none';
-  }
-
-  function updateScene(vh) {
+  function updateScene() {
     var hdr = header ? header.offsetHeight : 64, i;
-    if (reduced) {
-      scene.head.style.opacity = 1;
-      scene.cards.forEach(function (c) { c.style.opacity = 1; });
+    if (reduced || !scene.pinned) {
+      // phones, short screens, reduced motion: no animation at all, the section is simply there
+      scene.head.style.opacity = ''; scene.head.style.transform = '';
+      scene.wrap.style.opacity = ''; scene.wrap.style.pointerEvents = '';
+      scene.cards.forEach(function (c) { c.style.opacity = ''; c.style.transform = ''; c.style.pointerEvents = ''; });
       return;
     }
-    if (scene.pinned) {
-      // ----- pinned: both parts are driven by how far we have scrolled inside the scene -----
-      var r = scene.el.getBoundingClientRect();
-      var range = r.height - scene.pin.offsetHeight;
-      var t = range > 0 ? clamp((hdr - r.top) / range) : 1;
-      var inU = easeOut(span(t, HEAD_IN[0], HEAD_IN[1]));
-      var on = t >= STEP;                       // one step: heading moves up, cards slide in (CSS timing in home.css)
-      scene.head.style.opacity = inU.toFixed(3);
-      scene.head.style.transform = 'translate3d(0,' + ((on ? 0 : scene.drop) + (1 - inU) * 40).toFixed(1) + 'px,0)';
-      for (i = 0; i < scene.cards.length; i++) {
-        var c = scene.cards[i];
-        c.style.setProperty('--ci', i);
-        c.style.opacity = 1;                       // no fade: the card is simply below the pin until it slides up
-        c.style.transform = 'translate3d(0,' + (on ? 0 : scene.cardDrop) + 'px,0)';
-        c.style.pointerEvents = on ? 'auto' : 'none';
-      }
-    } else {
-      // ----- not pinned (phones, short screens): each item follows its own position on the screen -----
-      var h = scene.head.getBoundingClientRect();
-      put(scene.head, easeOut(clamp((vh * 0.95 - h.top) / (vh * 0.3))), 40);
-      scene.head.style.transform = 'translate3d(0,' + ((1 - easeOut(clamp((vh * 0.95 - h.top) / (vh * 0.3)))) * 40).toFixed(1) + 'px,0)';
-      for (i = 0; i < scene.cards.length; i++) {
-        var b = scene.cards[i].getBoundingClientRect();
-        put(scene.cards[i], easeOut(clamp((vh * 0.96 - b.top) / (vh * 0.34))), 110);
-      }
+    // ----- pinned (desktop): one step at STEP, a fade-out at the end, both driven by how far we have scrolled -----
+    var r = scene.el.getBoundingClientRect();
+    var range = r.height - scene.pin.offsetHeight;
+    var t = range > 0 ? clamp((hdr - r.top) / range) : 1;
+    var on = t >= STEP;                         // heading fades in + cards slide up (CSS timing in home.css)
+    scene.head.style.opacity = on ? 1 : 0;
+    for (i = 0; i < scene.cards.length; i++) {
+      var c = scene.cards[i];
+      c.style.opacity = 1;                      // no fade on the cards: each is below the pin until it slides up
+      c.style.transform = 'translate3d(0,' + (on ? 0 : scene.cardDrop) + 'px,0)';
+      c.style.pointerEvents = on ? 'auto' : 'none';
     }
+    var fade = 1 - span(t, EXIT[0], EXIT[1]);   // leaving: everything fades away
+    scene.wrap.style.opacity = fade.toFixed(3);
+    scene.wrap.style.pointerEvents = fade < 0.3 ? 'none' : '';
   }
 
   function update() {
@@ -133,7 +115,7 @@ AW.motion = (function () {
     var max = document.documentElement.scrollHeight - vh;
     if (bar) bar.style.setProperty('--p', max > 0 ? (y / max).toFixed(4) : 0);
 
-    if (scene.el) updateScene(vh);
+    if (scene.el) updateScene();
     if (reduced) return;
 
     for (var i = 0; i < parallax.length; i++) {
