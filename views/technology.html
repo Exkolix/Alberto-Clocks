@@ -1,0 +1,218 @@
+<link rel="stylesheet" href="css/technology.css">
+
+<section class="page-head">
+  <h1 class="title split"><span>Watch <em>Technology</em></span></h1>
+  <span class="rule reveal"></span>
+  <p class="sub reveal" style="--i:1">How a watch keeps time</p>
+</section>
+
+<section class="section section--ivory tech-section">
+  <div class="wrap tech-layout">
+
+    <!-- Index: pick a topic (menu links like #/technology?item=solar open it directly) -->
+    <nav class="tech-index reveal" aria-label="Technology topics">
+      <ul class="tech-list" id="techList">
+        <li><button class="tech-tab" type="button" data-key="mechanical"><span class="tech-no">01</span><span>Mechanical</span></button></li>
+        <li><button class="tech-tab" type="button" data-key="automatic"><span class="tech-no">02</span><span>Automatic</span></button></li>
+        <li><button class="tech-tab" type="button" data-key="quartz"><span class="tech-no">03</span><span>Quartz</span></button></li>
+        <li><button class="tech-tab" type="button" data-key="solar"><span class="tech-no">04</span><span>Solar</span></button></li>
+        <li><button class="tech-tab" type="button" data-key="smart-sensors"><span class="tech-no">05</span><span>Smart Sensors</span></button></li>
+      </ul>
+    </nav>
+
+    <!-- Stage: one topic open at a time -->
+    <div class="tech-stage reveal" style="--i:1">
+
+      <!-- 01 MECHANICAL -->
+      <article class="tech-item" data-key="mechanical" id="tech-mechanical">
+        <div class="tech-head">
+          <p class="tech-eyebrow">01 / 05</p>
+          <h2 class="title">Mechanical <em>Movement</em></h2>
+          <p class="tech-intro">A wound spring supplies the power. A balance wheel keeps the beat.</p>
+        </div>
+        <figure class="tech-visual">
+          <svg viewBox="0 10 640 290" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="A mainspring barrel turning a gear train that drives a swinging balance wheel">
+            <g class="tk-spin">
+              <circle class="tk-teeth" cx="170" cy="165" r="78" stroke-width="9" stroke-dasharray="8.6 5"/>
+              <circle cx="170" cy="165" r="66"/>
+              <path d="M170 165a3 3 0 0 1 6 0a6 6 0 0 1-12 0a9 9 0 0 1 18 0a12 12 0 0 1-24 0a15 15 0 0 1 30 0a18 18 0 0 1-36 0a21 21 0 0 1 42 0a24 24 0 0 1-48 0a27 27 0 0 1 54 0a30 30 0 0 1-60 0"/>
+              <circle cx="170" cy="165" r="5" fill="currentColor" stroke="none"/>
+            </g>
+            <g class="tk-spin tk-rev">
+              <circle class="tk-teeth" cx="290" cy="105" r="46" stroke-width="8" stroke-dasharray="7.4 4.64"/>
+              <circle cx="290" cy="105" r="36"/>
+              <path d="M290 69V141M254 105H326"/>
+              <circle cx="290" cy="105" r="5" fill="currentColor" stroke="none"/>
+            </g>
+            <g class="tk-spin">
+              <circle class="tk-teeth" cx="354" cy="172" r="36" stroke-width="8" stroke-dasharray="7 4.31"/>
+              <circle cx="354" cy="172" r="28"/>
+              <path d="M354 144V200M326 172H382"/>
+              <circle cx="354" cy="172" r="4" fill="currentColor" stroke="none"/>
+            </g>
+            <path class="tk-dim" d="M394 170L452 152" stroke-dasharray="2 5"/>
+            <g class="tk-swing">
+              <circle cx="520" cy="150" r="70" stroke-width="2.2"/>
+              <path d="M520 150V80M520 150L459.4 185M520 150L580.6 185"/>
+              <circle cx="520" cy="80" r="6" class="tk-soft"/>
+              <circle cx="459.4" cy="185" r="6" class="tk-soft"/>
+              <circle cx="580.6" cy="185" r="6" class="tk-soft"/>
+              <path d="M520 150a2 2 0 0 1 4 0a4 4 0 0 1-8 0a6 6 0 0 1 12 0a8 8 0 0 1-16 0a10 10 0 0 1 20 0a12 12 0 0 1-24 0a14 14 0 0 1 28 0a16 16 0 0 1-32 0a18 18 0 0 1 36 0a20 20 0 0 1-40 0"/>
+              <circle cx="520" cy="150" r="5" fill="currentColor" stroke="none"/>
+            </g>
+          </svg>
+        </figure>
+        <div class="tech-detail">
+          <ol class="tech-steps">
+            <li><b>Wind</b>Turning the crown winds the mainspring and stores energy in it.</li>
+            <li><b>Release</b>A gear train carries the energy to the escapement, which lets it out in tiny, even steps.</li>
+            <li><b>Keep time</b>The balance wheel swings back and forth at a steady rate and moves the hands on.</li>
+          </ol>
+          <a class="link-line tech-more" href="#/products?q=manual%20wind">See watches</a>
+        </div>
+      </article>
+
+      <!-- 02 AUTOMATIC -->
+      <article class="tech-item" data-key="automatic" id="tech-automatic">
+        <div class="tech-head">
+          <p class="tech-eyebrow">02 / 05</p>
+          <h2 class="title"><em>Automatic</em> Winding</h2>
+          <p class="tech-intro">A mechanical watch that winds itself as you move.</p>
+        </div>
+        <figure class="tech-visual">
+          <svg viewBox="0 10 640 290" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="A weighted rotor swinging inside a watch case and winding a mainspring barrel">
+            <circle class="tk-dim" cx="320" cy="160" r="112"/>
+            <path class="tk-dim" d="M335 160H490" stroke-dasharray="2 5"/>
+            <g class="tk-rotor">
+              <path class="tk-soft" d="M225 160A95 95 0 0 1 415 160L375 160A55 55 0 0 0 265 160Z"/>
+              <path d="M320 160V105"/>
+            </g>
+            <circle cx="320" cy="160" r="8" fill="currentColor" stroke="none"/>
+            <path class="tk-dim" d="M205 70A146 146 0 0 1 435 70M432.7 60.2L435 70L426 65.5M207.3 60.2L205 70L214 65.5"/>
+            <g class="tk-spin">
+              <circle class="tk-teeth" cx="535" cy="160" r="40" stroke-width="8" stroke-dasharray="8.8 5.16"/>
+              <circle cx="535" cy="160" r="31"/>
+              <path d="M535 160a1.5 1.5 0 0 1 3 0a3 3 0 0 1-6 0a4.5 4.5 0 0 1 9 0a6 6 0 0 1-12 0a7.5 7.5 0 0 1 15 0a9 9 0 0 1-18 0a10.5 10.5 0 0 1 21 0a12 12 0 0 1-24 0a13.5 13.5 0 0 1 27 0a15 15 0 0 1-30 0"/>
+            </g>
+          </svg>
+        </figure>
+        <div class="tech-detail">
+          <ol class="tech-steps">
+            <li><b>Swing</b>A weighted rotor turns freely whenever your wrist moves.</li>
+            <li><b>Wind</b>Through a small gear train, the rotor winds the mainspring for you.</li>
+            <li><b>Run</b>The movement then works like a mechanical one, with no crown winding needed while you wear it.</li>
+          </ol>
+          <a class="link-line tech-more" href="#/products?q=automatic">See watches</a>
+        </div>
+      </article>
+
+      <!-- 03 QUARTZ -->
+      <article class="tech-item" data-key="quartz" id="tech-quartz">
+        <div class="tech-head">
+          <p class="tech-eyebrow">03 / 05</p>
+          <h2 class="title">Quartz <em>Timekeeping</em></h2>
+          <p class="tech-intro">A battery and a crystal, counting time with great regularity.</p>
+        </div>
+        <figure class="tech-visual">
+          <svg viewBox="0 10 640 290" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="A battery powering a vibrating quartz crystal, a counting circuit and a dial with a ticking second hand">
+            <rect x="40" y="120" width="100" height="64" rx="6"/>
+            <rect x="140" y="140" width="8" height="24" rx="2"/>
+            <path d="M64 152h12M70 146v12M104 152h12"/>
+            <path d="M148 152H220"/>
+            <rect x="220" y="112" width="110" height="80" rx="4"/>
+            <path d="M212 128h8M212 152h8M212 176h8M330 128h8M330 176h8"/>
+            <path d="M275 98V112M262 90V40M288 90V40M262 90Q275 102 288 90"/>
+            <path class="tk-dim tk-vib" d="M252 52q-8 10 0 20M298 52q8 10 0 20M242 48q-12 14 0 28M308 48q12 14 0 28"/>
+            <path d="M330 152H338q9-26 18 0t18 0t18 0t18 0"/>
+            <path d="M410 152H448"/>
+            <circle cx="520" cy="152" r="72"/>
+            <circle class="tk-dim" cx="520" cy="152" r="66"/>
+            <path d="M520 82v8M555 91.4l-4 6.9M580.6 117l-6.9 4M590 152h-8M580.6 187l-6.9-4M555 212.6l-4-6.9M520 222v-8M485 212.6l4-6.9M459.4 187l6.9-4M450 152h8M459.4 117l6.9 4M485 91.4l4 6.9"/>
+            <path d="M520 152L490.6 135M520 152L565 126"/>
+            <path class="tk-tick" d="M520 152V92"/>
+            <circle cx="520" cy="152" r="4" fill="currentColor" stroke="none"/>
+          </svg>
+        </figure>
+        <div class="tech-detail">
+          <ol class="tech-steps">
+            <li><b>Power</b>A battery sends a small current to a quartz crystal.</li>
+            <li><b>Vibrate</b>The crystal vibrates 32,768 times every second, always at the same rate.</li>
+            <li><b>Count</b>A circuit counts the vibrations and steps the hands once a second.</li>
+          </ol>
+        </div>
+      </article>
+
+      <!-- 04 SOLAR -->
+      <article class="tech-item" data-key="solar" id="tech-solar">
+        <div class="tech-head">
+          <p class="tech-eyebrow">04 / 05</p>
+          <h2 class="title">Solar <em>Power</em></h2>
+          <p class="tech-intro">Light charges a cell, and the cell runs a quartz movement.</p>
+        </div>
+        <figure class="tech-visual">
+          <svg viewBox="0 10 640 290" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Sunlight falling on a watch dial with a solar cell, charging a battery">
+            <circle cx="90" cy="70" r="22"/>
+            <circle cx="90" cy="70" r="40" stroke-width="14" stroke-dasharray="1.2 19.74" stroke-linecap="butt"/>
+            <path class="tk-dim tk-flow" d="M125 90L270 125M122 98L262 150M120 106L255 175" stroke-dasharray="4 6"/>
+            <circle cx="360" cy="190" r="100"/>
+            <circle class="tk-dim" cx="360" cy="190" r="92"/>
+            <circle class="tk-cells" cx="360" cy="190" r="66" stroke-width="22" stroke-dasharray="37.47 4" stroke-linecap="butt"/>
+            <circle cx="360" cy="190" r="84" stroke-width="8" stroke-dasharray="1.2 42.78" stroke-linecap="butt" transform="rotate(-90 360 190)"/>
+            <path d="M360 190L323 164M360 190L416 158"/>
+            <circle cx="360" cy="190" r="4" fill="currentColor" stroke="none"/>
+            <path d="M460 190H530"/>
+            <rect x="530" y="150" width="60" height="90" rx="6"/>
+            <rect x="550" y="142" width="20" height="8" rx="2"/>
+            <path d="M540 175H580M540 195H580M540 215H580" class="tk-level"/>
+          </svg>
+        </figure>
+        <div class="tech-detail">
+          <ol class="tech-steps">
+            <li><b>Collect</b>A solar cell under the dial turns light into electricity.</li>
+            <li><b>Store</b>A rechargeable cell holds that power for when it is dark.</li>
+            <li><b>Run</b>The quartz movement draws on the stored power, so it keeps going after dark and rarely needs a new battery.</li>
+          </ol>
+        </div>
+      </article>
+
+      <!-- 05 SMART SENSORS -->
+      <article class="tech-item" data-key="smart-sensors" id="tech-smart-sensors">
+        <div class="tech-head">
+          <p class="tech-eyebrow">05 / 05</p>
+          <h2 class="title">Smart <em>Sensors</em></h2>
+          <p class="tech-intro">Sensors read your body and your movement, then show the result on the screen.</p>
+        </div>
+        <figure class="tech-visual">
+          <svg viewBox="0 10 640 290" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Sensors on the back of a smartwatch reading a pulse and sending the result to a phone">
+            <rect x="160" y="30" width="90" height="30" rx="8" class="tk-dim"/>
+            <rect x="160" y="260" width="90" height="30" rx="8" class="tk-dim"/>
+            <rect x="120" y="60" width="170" height="200" rx="50"/>
+            <circle cx="205" cy="160" r="54"/>
+            <circle class="tk-pulse" cx="205" cy="160" r="54"/>
+            <circle class="tk-soft" cx="205" cy="130" r="7"/>
+            <circle class="tk-soft" cx="180" cy="173" r="7"/>
+            <circle class="tk-soft" cx="230" cy="173" r="7"/>
+            <circle cx="205" cy="160" r="3" fill="currentColor" stroke="none"/>
+            <path class="tk-draw" d="M290 160H330L342 120L358 205L372 140L382 160H470"/>
+            <rect x="470" y="70" width="110" height="180" rx="16"/>
+            <path class="tk-dim" d="M505 84H545"/>
+            <circle class="tk-dim" cx="525" cy="125" r="22"/>
+            <circle cx="525" cy="125" r="22" stroke-dasharray="96 42" transform="rotate(-90 525 125)"/>
+            <path d="M488 205l14-20l14 12l14-30l14 18l14-10"/>
+          </svg>
+        </figure>
+        <div class="tech-detail">
+          <ol class="tech-steps">
+            <li><b>Sense</b>Light sensors on the case back read your pulse through the skin. An accelerometer and GPS follow your steps and routes.</li>
+            <li><b>Process</b>A small processor turns the raw readings into clear numbers.</li>
+            <li><b>Share</b>The watch shows them on its display and sends them to your phone over Bluetooth.</li>
+          </ol>
+          <a class="link-line tech-more" href="#/products?line=smart">See watches</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- </body> (keeps VS Code Live Server from cutting this file short; leave it as the last line) -->

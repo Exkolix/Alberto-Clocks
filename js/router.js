@@ -9,7 +9,7 @@ AW.router = (function () {
     'home':          { file: 'views/home.html',          title: 'Home',                    init: function () { AW.home.init(); } },
     'products':      { file: 'views/products.html',      title: 'Products',                init: function (p) { AW.products.init(p); } },
     'price-list':    { file: 'views/price-list.html',    title: 'Price List',              init: function (p) { AW.priceList.init(p); } },
-    'technology':    { file: 'views/technology.html',    title: 'Technology' },
+    'technology':    { file: 'views/technology.html',    title: 'Technology',              init: function (p) { AW.technology.init(p); } },
     'gallery':       { file: 'views/gallery.html',       title: 'Gallery' },
     'store-locator': { file: 'views/store-locator.html', title: 'Store Locator & Contact' },
     'support':       { file: 'views/support.html',       title: 'Support' },
