@@ -1,0 +1,75 @@
+/* ==========================================================
+   PRICE LIST SCREEN  (owner: Obash)
+   A calm table: line-up tabs and search on top, one hairline row per watch, gold prices.
+   Base table look (.table-lux) comes from components.css.
+   ========================================================== */
+.pl-section { padding-top: clamp(2rem, 4vw, 3.4rem); }
+
+/* ---------- Tabs + search ---------- */
+.pl-bar { display: flex; align-items: flex-end; justify-content: space-between; gap: 1.5rem 2rem; flex-wrap: wrap; border-bottom: 1px solid rgba(255, 255, 255, .1); }
+.pl-tabs { flex: 1 1 auto; border-bottom: 0; }
+.pl-search { position: relative; flex: 0 1 320px; min-width: 220px; margin-bottom: .8rem; }
+.pl-search > svg { position: absolute; left: .95rem; top: 50%; width: 15px; height: 15px; transform: translateY(-50%); color: rgba(255, 255, 255, .5); pointer-events: none; transition: color var(--dur-fast); }
+.pl-search:focus-within > svg { color: var(--c-gold); }
+.pl-search input { width: 100%; padding: .75rem 2.5rem .75rem 2.7rem; background: rgba(255, 255, 255, .03); color: var(--c-white); font: inherit; letter-spacing: .04em; border: 1px solid rgba(255, 255, 255, .18); border-radius: var(--radius); transition: border-color var(--dur-fast); }
+.pl-search input::placeholder { color: rgba(255, 255, 255, .45); font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; }
+.pl-search input:hover, .pl-search input:focus { border-color: var(--c-gold); }
+.pl-search input:focus { outline: 0; }
+.pl-search input::-webkit-search-cancel-button, .pl-search input::-webkit-search-decoration { -webkit-appearance: none; appearance: none; }
+.pl-clear { position: absolute; right: .35rem; top: 50%; width: 2rem; height: 2rem; padding: 0; transform: translateY(-50%); display: grid; place-items: center; background: none; border: 0; color: rgba(255, 255, 255, .6); cursor: pointer; transition: color var(--dur-fast); }
+.pl-clear[hidden] { display: none; }
+.pl-clear:hover { color: var(--c-gold); }
+.pl-clear svg { width: 14px; height: 14px; }
+
+.pl-count { margin: 1.4rem 0 .4rem; font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255, 255, 255, .5); }
+
+/* ---------- Table ---------- */
+.pl-wrap { overflow-x: auto; }
+.pl-table { min-width: 0; transition: opacity .16s var(--ease); }
+.pl-table.is-swap tbody { opacity: 0; }
+.pl-table tbody { transition: opacity .16s var(--ease); }
+.pl-table th { white-space: nowrap; }
+.pl-table td { padding-block: .85rem; }
+.pl-table tbody tr:focus-visible { outline: 1px solid var(--c-gold); outline-offset: -1px; background: rgba(201, 162, 90, .08); }
+
+.pl-c-photo { width: 84px; }
+.pl-table img { width: 52px; height: 65px; transition: transform .6s var(--ease); }
+.pl-table tbody tr:hover img { transform: scale(1.06); }
+.pl-title { display: block; font-size: 1.02rem; font-weight: 400; line-height: 1.35; }
+.pl-ref { display: block; margin-top: .25rem; font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255, 255, 255, .5); }
+.pl-table td.pl-c-line, .pl-table td.pl-c-year, .pl-table td.pl-c-move { color: var(--c-muted-dark); }
+.pl-table th.pl-c-price, .pl-table td.pl-c-price { text-align: right; }
+.pl-table td.pl-c-price { font-size: 1rem; }
+
+/* sortable headings: a plain word that gets a small triangle once it is the active sort */
+.pl-sort { display: inline-flex; align-items: center; padding: 0; background: none; border: 0; color: inherit; font: inherit; letter-spacing: inherit; text-transform: inherit; cursor: pointer; transition: color var(--dur-fast); }
+.pl-sort:hover { color: var(--c-gold-light); }
+.pl-sort::after { content: ''; margin-left: .6rem; border: 4px solid transparent; opacity: 0; }
+th[aria-sort="descending"] .pl-sort::after { border-top-color: currentColor; border-bottom-width: 0; opacity: 1; }
+th[aria-sort="ascending"] .pl-sort::after { border-bottom-color: currentColor; border-top-width: 0; opacity: 1; }
+/* the Price heading is right-aligned over the prices, so its arrow sits before the word instead of after it */
+.pl-c-price .pl-sort::after { content: none; }
+.pl-c-price .pl-sort::before { content: ''; margin-right: .6rem; border: 4px solid transparent; opacity: 0; }
+th.pl-c-price[aria-sort="descending"] .pl-sort::before { border-top-color: currentColor; border-bottom-width: 0; opacity: 1; }
+th.pl-c-price[aria-sort="ascending"] .pl-sort::before { border-bottom-color: currentColor; border-top-width: 0; opacity: 1; }
+
+.pl-empty td { padding: 3rem .8rem; color: var(--c-muted-dark); cursor: default; }
+.pl-table tbody tr.pl-empty:hover { background: none; }
+.pl-empty .link-line { display: inline-flex; margin-top: 1.2rem; padding: 0; background: none; border: 0; font: inherit; font-weight: 500; cursor: pointer; }
+.pl-note { margin-top: 1.6rem; font-size: .75rem; letter-spacing: .06em; color: rgba(255, 255, 255, .5); }
+
+/* ---------- Narrower screens: fewer columns, same row ---------- */
+@media (max-width: 991.98px) { .pl-c-move { display: none; } }
+@media (max-width: 767.98px) {
+  .pl-c-line, .pl-c-year { display: none; }
+  .pl-c-photo { width: 64px; }
+  .pl-table img { width: 44px; height: 55px; }
+  .pl-table th, .pl-table td { padding-inline: .5rem; }
+  .pl-title { font-size: .95rem; }
+}
+@media (max-width: 575.98px) {
+  .pl-bar { flex-direction: column-reverse; align-items: stretch; gap: 1rem; padding-bottom: 0; }
+  .pl-search { flex: none; min-width: 0; margin-bottom: 0; }
+  .pl-bar .nav-lux { border-top: 1px solid rgba(255, 255, 255, .1); gap: .2rem 1.1rem; }
+  .pl-bar .nav-lux .nav-link { letter-spacing: .14em; }
+}
