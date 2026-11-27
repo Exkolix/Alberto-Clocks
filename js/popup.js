@@ -10,6 +10,9 @@ AW.popup = (function () {
       var lineup = d.lineups.filter(function (l) { return l.id === w.lineup; })[0];
       $('#wmImg').attr({ src: w.image, alt: w.name });
       $('#wmLine').text(lineup ? lineup.name : '');
+      var n = d.watches.indexOf(w) + 1;
+      $('#wmRef').text('Ref. AW-' + (n < 10 ? '0' : '') + n);
+      $('#wmCap').text(w.year + ' \u00b7 ' + w.movement);
       $('#wmName').text(w.name);
       $('#wmPrice').text(AW.fmt(w.price));
       $('#wmDesc').text(w.description);

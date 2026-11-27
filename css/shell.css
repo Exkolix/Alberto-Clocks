@@ -166,21 +166,44 @@
 .footer-word small { display: block; font-size: .5rem; letter-spacing: .42em; color: var(--c-gold); margin-top: .5rem; font-weight: 500; }
 .footer-copy { margin-top: 1.4rem; font-size: .72rem; color: var(--c-muted-dark); letter-spacing: .06em; }
 
-/* ---------- Watch popup (Bootstrap modal, restyled) ---------- */
-.watch-modal .modal-content { background: #121212; color: var(--c-white); border: 1px solid var(--c-line-dark); border-radius: var(--radius); overflow: hidden; }
-.watch-modal .btn-close { position: absolute; top: 1rem; right: 1rem; z-index: 3; filter: invert(1); opacity: .85; }
+/* ---------- Watch popup (Bootstrap modal, restyled): big photo on the left, dark detail panel on the right ---------- */
+.watch-modal .modal-content { background: #0D0D0D; color: var(--c-white); border: 1px solid var(--c-line-dark); border-radius: var(--radius); overflow: hidden; }
+.watch-modal .btn-close { position: absolute; top: 1rem; right: 1rem; z-index: 3; filter: invert(1); opacity: .8; transition: opacity var(--dur-fast), transform .4s var(--ease); }
+.watch-modal .btn-close:hover { opacity: 1; transform: rotate(90deg); }
 .wm-grid { display: grid; grid-template-columns: 1fr; }
-@media (min-width: 768px) { .wm-grid { grid-template-columns: 1fr 1fr; } }
-.wm-photo { position: relative; background: var(--c-charcoal); aspect-ratio: 4 / 5; }
-.wm-photo img { width: 100%; height: 100%; object-fit: cover; }
+@media (min-width: 768px) { .wm-grid { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); min-height: min(600px, 86vh); } }
+.wm-photo { position: relative; overflow: hidden; background: var(--c-charcoal); aspect-ratio: 4 / 3.4; }
+.wm-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 62%, rgba(0,0,0,.72) 100%); pointer-events: none; }
+.wm-photo img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.06); transition: transform 2.4s var(--ease-out); }
+.watch-modal.show .wm-photo img { transform: none; }
 @media (min-width: 768px) { .wm-photo { aspect-ratio: auto; } .wm-photo img { position: absolute; inset: 0; } }
-.wm-body { padding: clamp(1.5rem, 3vw, 2.6rem); display: flex; flex-direction: column; justify-content: center; }
-.wm-line { font-size: .68rem; letter-spacing: .24em; text-transform: uppercase; color: var(--c-muted-dark); }
-.wm-name { font-weight: 300; font-size: clamp(1.4rem, 2.6vw, 2rem); line-height: 1.25; margin: .6rem 0 .4rem; }
-.wm-price { color: var(--c-gold); font-weight: 600; font-size: 1.25rem; }
-.wm-desc { margin: 1.2rem 0; color: var(--c-muted-dark); line-height: 1.7; }
-.wm-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 1.2rem; margin: 0 0 1.8rem; padding-top: 1.2rem; border-top: 1px solid var(--c-line-dark); }
-.wm-specs dt { font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; color: var(--c-gold); font-weight: 500; }
-.wm-specs dd { margin: .15rem 0 0; font-size: .85rem; }
-.wm-actions { display: flex; gap: .8rem; flex-wrap: wrap; }
+.wm-cap { position: absolute; left: 1.4rem; bottom: 1.2rem; z-index: 1; display: flex; align-items: center; gap: .6rem; font-size: .6rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--c-muted-dark); }
+.wm-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--c-gold); flex: none; }
+
+.wm-body { padding: clamp(1.6rem, 3.2vw, 2.8rem); display: flex; flex-direction: column; justify-content: center; min-width: 0; background: #0D0D0D; }
+.wm-top { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding-right: 2rem; }
+.wm-line { font-size: .62rem; font-weight: 500; letter-spacing: .26em; text-transform: uppercase; color: var(--c-gold); }
+.wm-ref { font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: var(--c-muted-dark); white-space: nowrap; }
+.wm-name { font-weight: 300; font-size: clamp(1.5rem, 2.7vw, 2.15rem); line-height: 1.2; letter-spacing: .1em; text-transform: uppercase; margin: 1rem 0 1.2rem; }
+.wm-price { display: flex; align-items: baseline; gap: .9rem; }
+.wm-price span { font-size: .6rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--c-muted-dark); }
+.wm-price b { color: var(--c-gold); font-weight: 500; font-size: 1.2rem; letter-spacing: .08em; }
+.wm-desc { margin: 1.3rem 0 1.6rem; color: var(--c-muted-dark); font-size: .9rem; line-height: 1.75; }
+.wm-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 1.3rem 1.4rem; margin: 0 0 1.8rem; padding: 1.4rem; background: #171717; border-radius: var(--radius); }
+.wm-specs dt { font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: var(--c-muted-dark); font-weight: 500; }
+.wm-specs dd { margin: .35rem 0 0; font-size: .9rem; }
+.wm-cta { display: flex; justify-content: center; align-items: center; gap: .9rem; padding: 1.05rem 1.4rem; border: 1px solid var(--c-gold); border-radius: var(--radius); color: var(--c-gold); font-size: .68rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease); }
+.wm-cta svg { width: 18px; height: 10px; transition: transform var(--dur-fast) var(--ease); }
+.wm-cta:hover { background: var(--c-gold); color: var(--c-black); }
+.wm-cta:hover svg { transform: translateX(5px); }
+.wm-foot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .5rem 1rem; margin-top: 1rem; font-size: .6rem; letter-spacing: .16em; text-transform: uppercase; color: var(--c-muted-dark); }
+.wm-foot span { display: inline-flex; align-items: center; gap: .55rem; }
+.wm-foot a { color: var(--c-muted-dark); transition: color var(--dur-fast); }
+.wm-foot a:hover { color: var(--c-gold); }
+.wm-foot .wm-dot { width: 5px; height: 5px; background: var(--c-steel); }
+
+/* the details arrive one after another (soft fade-down), every time the popup opens */
+.watch-modal.show .wm-body > * { animation: subDown .9s var(--ease-out) calc(.2s + var(--k, 0) * 70ms) both; }
+.wm-body > :nth-child(1) { --k: 0; } .wm-body > :nth-child(2) { --k: 1; } .wm-body > :nth-child(3) { --k: 2; }
+.wm-body > :nth-child(4) { --k: 3; } .wm-body > :nth-child(5) { --k: 4; } .wm-body > :nth-child(6) { --k: 5; } .wm-body > :nth-child(7) { --k: 6; }
 .modal-backdrop.show { opacity: .8; }

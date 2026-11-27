@@ -144,15 +144,18 @@
 
 <!-- ================= WATCH POPUP ================= -->
 <div class="modal fade watch-modal" id="watchModal" tabindex="-1" aria-labelledby="wmName" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
     <div class="modal-content">
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       <div class="wm-grid">
-        <div class="wm-photo"><img id="wmImg" src="" alt=""></div>
+        <div class="wm-photo">
+          <img id="wmImg" src="" alt="">
+          <p class="wm-cap"><span class="wm-dot"></span><span id="wmCap"></span></p>
+        </div>
         <div class="wm-body">
-          <p class="wm-line" id="wmLine"></p>
+          <div class="wm-top"><p class="wm-line" id="wmLine"></p><p class="wm-ref" id="wmRef"></p></div>
           <h3 class="wm-name" id="wmName"></h3>
-          <p class="wm-price" id="wmPrice"></p>
+          <p class="wm-price"><span>Price</span><b id="wmPrice"></b></p>
           <p class="wm-desc" id="wmDesc"></p>
           <dl class="wm-specs">
             <div><dt>Year</dt><dd id="wmYear"></dd></div>
@@ -160,10 +163,9 @@
             <div><dt>Case</dt><dd id="wmCase"></dd></div>
             <div><dt>Water resistance</dt><dd id="wmWater"></dd></div>
           </dl>
-          <div class="wm-actions">
-            <a class="btn-gold" href="#/contact" data-bs-dismiss="modal">Enquire</a>
-            <button class="btn-ghost" type="button" data-bs-dismiss="modal">Close</button>
-          </div>
+          <a class="wm-cta" href="#/contact" data-bs-dismiss="modal"><span>Enquire about this watch</span>
+            <svg viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 5h16M12 1l4 4-4 4"/></svg></a>
+          <p class="wm-foot"><span><i class="wm-dot"></i>Available in Lagos, Abuja and Port Harcourt</span><a href="tel:+2348000000102">+234 800 000 0102</a></p>
         </div>
       </div>
     </div>
