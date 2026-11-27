@@ -45,6 +45,7 @@ AW.menu = (function () {
 
   function init() {
     $menu = $('#menu'); $hb = $('#hb');
+    $menu.find('.menu-sub-inner').each(function () { $(this).find('a').each(function (i) { this.style.setProperty('--k', i); }); });   // order of arrival
     $hb.on('click', open);
     $menu.on('click', '[data-menu-close]', close);
     $(document).on('keydown', function (e) { if (e.key === 'Escape') close(); });

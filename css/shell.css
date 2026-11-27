@@ -96,15 +96,16 @@
      and only its content is drawn again with a fade down. js/menu.js adds .is-switching to .menu for that case. */
   .menu-item.is-open > .menu-sub { max-height: none; opacity: 1; visibility: visible; animation: subPanel .6s var(--ease-out) both; }
   .menu.is-switching .menu-item.is-open > .menu-sub { animation: none; }
-  .menu-item.is-open > .menu-sub .menu-sub-inner { animation: subDown .65s var(--ease-out) .3s both; }   /* after the panel has extended */
-  .menu.is-switching .menu-item.is-open > .menu-sub .menu-sub-inner { animation-delay: .05s; }
+  /* the entries (links, photo tiles) arrive one after another: a soft fade with a small drop, long ease-out */
+  .menu-item.is-open > .menu-sub .menu-sub-inner a { --base: .3s; animation: subDown .9s var(--ease-out) calc(var(--base) + var(--k, 0) * 70ms) both; }   /* first open: after the panel has extended */
+  .menu.is-switching .menu-item.is-open > .menu-sub .menu-sub-inner a { --base: .06s; }
   .menu-sub-inner { padding: 6.5rem clamp(1.5rem, 3vw, 3rem) 2rem; }
   .menu-links a { font-size: 1.15rem; font-weight: 300; }
 }
 
 /* the grey panel EXTENDS out of the ivory one, left to right */
 @keyframes subPanel { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
-@keyframes subDown { from { opacity: 0; transform: translateY(-18px); } to { opacity: 1; transform: none; } }
+@keyframes subDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
 
 /* photo tiles (Collections only) */
 .tiles { display: grid; grid-template-columns: repeat(3, minmax(110px, 1fr)); gap: .6rem; overflow-x: auto; padding-bottom: .4rem; margin-bottom: .6rem; scroll-snap-type: x mandatory; }
