@@ -6,46 +6,53 @@
   <p class="sub reveal" style="--i:1">Every watch, in US dollars</p>
 </section>
 
-<section class="section section--charcoal pl-section">
+<section class="section section--dark pl-section">
   <div class="wrap">
+
+    <!-- Plain facts, nothing invented -->
+    <dl class="pl-facts">
+      <div><dt>Currency</dt><dd class="is-gold">US dollars (USD)</dd></div>
+      <div><dt>Collections</dt><dd>Vintage &middot; Luxury &middot; Smart Watches</dd></div>
+      <div><dt>Available in</dt><dd>Lagos &middot; Abuja &middot; Port Harcourt</dd></div>
+    </dl>
 
     <!-- Line-up tabs + search -->
     <div class="pl-bar">
-      <ul class="nav nav-lux pl-tabs" id="plTabs">
-        <li><button class="nav-link active" type="button" data-line="all" aria-pressed="true">All</button></li>
-        <li><button class="nav-link" type="button" data-line="vintage" aria-pressed="false">Vintage</button></li>
-        <li><button class="nav-link" type="button" data-line="luxury" aria-pressed="false">Luxury</button></li>
-        <li><button class="nav-link" type="button" data-line="smart" aria-pressed="false">Smart Watches</button></li>
+      <ul class="pl-tabs" id="plTabs">
+        <li><button class="pl-tab active" type="button" data-line="all" aria-pressed="true">All watches<span class="pl-n"></span></button></li>
+        <li><button class="pl-tab" type="button" data-line="vintage" aria-pressed="false">Vintage<span class="pl-n"></span></button></li>
+        <li><button class="pl-tab" type="button" data-line="luxury" aria-pressed="false">Luxury<span class="pl-n"></span></button></li>
+        <li><button class="pl-tab" type="button" data-line="smart" aria-pressed="false">Smart Watches<span class="pl-n"></span></button></li>
       </ul>
       <div class="pl-search">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
-        <input type="search" id="priceSearch" placeholder="Search the list" aria-label="Search the price list" autocomplete="off" spellcheck="false">
+        <input type="search" id="priceSearch" placeholder="Filter by name or ref" aria-label="Search the price list" autocomplete="off" spellcheck="false">
         <button class="pl-clear" type="button" id="priceSearchClear" aria-label="Clear search" hidden>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
         </button>
       </div>
     </div>
 
-    <p class="pl-count" id="plCount" aria-live="polite"></p>
-
     <!-- The rows are drawn from data/watches.json, so the prices always match the rest of the site -->
     <div class="pl-wrap">
       <table class="table-lux pl-table" id="priceTable">
         <thead>
           <tr>
-            <th class="pl-c-photo" scope="col"><span class="visually-hidden">Photo</span></th>
-            <th scope="col" aria-sort="none"><button class="pl-sort" type="button" data-sort="name">Watch</button></th>
+            <th class="pl-c-photo" scope="col">Photo</th>
+            <th scope="col" aria-sort="none"><button class="pl-sort" type="button" data-sort="name">Reference &amp; model</button></th>
             <th class="pl-c-line" scope="col">Collection</th>
+            <th class="pl-c-move" scope="col">Movement / case</th>
             <th class="pl-c-year" scope="col" aria-sort="none"><button class="pl-sort" type="button" data-sort="year">Year</button></th>
-            <th class="pl-c-move" scope="col">Movement</th>
             <th class="pl-c-price" scope="col" aria-sort="none"><button class="pl-sort" type="button" data-sort="price">Price</button></th>
+            <th class="pl-c-act" scope="col">Action</th>
           </tr>
         </thead>
         <tbody id="priceBody"></tbody>
       </table>
     </div>
 
-    <p class="pl-note">Select a watch to see its details. Available in Lagos, Abuja and Port Harcourt.</p>
+    <p class="pl-count" id="plCount" aria-live="polite"></p>
+    <p class="pl-note">Select a watch to see its details.</p>
   </div>
 </section>
 

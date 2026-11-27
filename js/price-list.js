@@ -39,14 +39,22 @@ AW.priceList = (function () {
         if (sort.key) $('[data-sort="' + sort.key + '"]').closest('th').attr('aria-sort', sort.dir > 0 ? 'ascending' : 'descending');
       }
 
+      // tab counts, e.g. "Luxury [3]"
+      $tabs.each(function () {
+        var id = $(this).data('line');
+        var n = id === 'all' ? watches.length : watches.filter(function (w) { return w.lineup === id; }).length;
+        $(this).find('.pl-n').text('[' + n + ']');
+      });
+
       function row(w) {
         return '<tr data-watch="' + w.id + '" tabindex="0">' +
           '<td class="pl-c-photo"><img src="' + w.image + '" alt="' + esc(w.name) + '" loading="lazy"></td>' +
           '<td><span class="pl-title">' + esc(w.name) + '</span><span class="pl-ref">' + meta[w.id].ref + '</span></td>' +
           '<td class="pl-c-line">' + esc(meta[w.id].line) + '</td>' +
+          '<td class="pl-c-move"><span class="pl-main">' + esc(w.movement) + '</span><span class="pl-sub">' + esc(w.case) + '</span></td>' +
           '<td class="pl-c-year">' + esc(w.year) + '</td>' +
-          '<td class="pl-c-move">' + esc(w.movement) + '</td>' +
-          '<td class="price pl-c-price">' + AW.fmt(w.price) + '</td></tr>';
+          '<td class="price pl-c-price">' + AW.fmt(w.price) + '</td>' +
+          '<td class="pl-c-act"><button class="pl-view" type="button" tabindex="-1">View</button></td></tr>';
       }
 
       function update(mode) {      // mode: 'fade' (tab, sort) or 'now' (typing, first draw)
@@ -78,7 +86,7 @@ AW.priceList = (function () {
         function draw() {
           $body.html(list.length
             ? list.map(row).join('')
-            : '<tr class="pl-empty"><td colspan="6"><p>No watches match' + (q ? ' “' + esc(q) + '”' : ' this search') + '.</p><button class="link-line" type="button" data-reset>Show all watches</button></td></tr>');
+            : '<tr class="pl-empty"><td colspan="7"><p>No watches match' + (q ? ' “' + esc(q) + '”' : ' this search') + '.</p><button class="link-line" type="button" data-reset>Show all watches</button></td></tr>');
           $table.removeClass('is-swap');
         }
         clearTimeout(timer);
