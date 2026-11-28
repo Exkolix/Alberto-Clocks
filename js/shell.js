@@ -5,17 +5,16 @@ window.AW = window.AW || {};
 
 AW.shell = (function () {
   /* ---------- Visitor counter ----------
-     No server, so the count is kept in the browser: it goes up by one for each new visit (session). */
+     No server, so the count is kept in this browser only. It starts at 0 and goes up by one per real visit:
+     opening more tabs or reloading does not count again; coming back after 30 minutes away does. */
   function visitors() {
-    var KEY = 'aw_visitors', n = 1000;
+    var KEY = 'aw_visits_v2', GAP = 30 * 60 * 1000, now = Date.now(), n = 1;
     try {
-      n = parseInt(localStorage.getItem(KEY), 10) || 1000;
-      if (!sessionStorage.getItem('aw_counted')) {
-        n += 1;
-        localStorage.setItem(KEY, n);
-        sessionStorage.setItem('aw_counted', '1');
-      }
-    } catch (e) { n = 1001; }
+      var saved = JSON.parse(localStorage.getItem(KEY) || 'null') || { n: 0, t: 0 };
+      n = saved.n;
+      if (!n || now - saved.t > GAP) n += 1;               // first visit ever, or back after a break
+      localStorage.setItem(KEY, JSON.stringify({ n: n, t: now }));   // every page load refreshes "last seen"
+    } catch (e) { n = 1; }
     $('#visitorCount').text(n.toLocaleString('en-US'));
   }
 

@@ -43,7 +43,7 @@ Photo goal: real photos should bring colour in some places (Collections, Service
 
 ## Pending
 - Menu check on phone; phone and Firefox/Edge visual checks; real `hero.mp4`; real photos (one batch swap); Services photos (undecided).
-- All screens are built. Gallery still uses placeholder art and looks bland until real/AI photos arrive (Obash will adjust later). Visitor counter is browser-only (see `js/shell.js`), being made more accurate.
+- All screens are built. Gallery still uses placeholder art and looks bland until real/AI photos arrive (Obash will adjust later). Visitor counter is browser-only by decision (Nov 28, `js/shell.js`): starts at 0, +1 per real visit (reload and extra tabs do not count, returning after 30 min away does), stored under `aw_visits_v2`. No shared/online counter.
 - Reports, diagrams, ReadMe.doc, demo video, final zip.
 
 ## Team and ownership
