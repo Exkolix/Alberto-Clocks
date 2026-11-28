@@ -1,0 +1,58 @@
+/* ==========================================================
+   SUPPORT SCREEN  (owner: Obash)
+   One ivory room with two tabs: Help (accordion) and Services (hairline list).
+   ========================================================== */
+.sp-section { padding-top: clamp(2.2rem, 4vw, 3.6rem); }
+
+/* ---------- Tabs (.nav-lux is made for dark rooms, so its colours are flipped for ivory) ---------- */
+.sp-tabs.nav-lux { border-bottom-color: var(--c-line-light); }
+.sp-tabs .nav-link { color: var(--c-muted-light); }
+.sp-tabs .nav-link:hover, .sp-tabs .nav-link.active { color: var(--c-ink); }
+
+.sp-pane { margin-top: clamp(2rem, 4vw, 3.4rem); animation: sp-in .6s var(--ease) backwards; }
+.sp-pane[hidden] { display: none; }
+@keyframes sp-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+.sp-eyebrow { margin: 0 0 .9rem; font-size: .62rem; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; color: var(--c-gold); }
+
+/* ---------- Help ---------- */
+.sp-grid { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: clamp(2rem, 6vw, 6rem); align-items: start; }
+.sp-intro .title { font-size: clamp(1.6rem, 3vw, 2.3rem); }
+.sp-lead { margin: 1.2rem 0 1.8rem; max-width: 30rem; line-height: 1.8; color: var(--c-muted-light); }
+.sp-intro .link-line { color: var(--c-ink); }
+.sp-intro .link-line:hover { color: var(--c-ink); }
+
+/* accordion colours flipped for ivory */
+.sp-faq.accordion-lux .accordion-item { border-bottom-color: var(--c-line-light); }
+.sp-faq.accordion-lux .accordion-item:first-child { border-top: 1px solid var(--c-line-light); }
+.sp-faq.accordion-lux .accordion-button { color: var(--c-ink); font-size: .95rem; }
+.sp-faq.accordion-lux .accordion-button:hover, .sp-faq.accordion-lux .accordion-button:not(.collapsed) { color: var(--c-ink); }
+.sp-faq.accordion-lux .accordion-button::after { filter: none; opacity: .7; }
+.sp-faq.accordion-lux .accordion-button:not(.collapsed) { box-shadow: inset 3px 0 0 var(--c-gold); padding-left: 1rem; }
+.sp-faq.accordion-lux .accordion-button:focus-visible { outline: 2px solid var(--c-steel); outline-offset: 2px; }
+.sp-faq.accordion-lux .accordion-body { padding: 0 1rem 1.6rem; color: var(--c-muted-light); }
+.sp-faq .accordion-body a { color: var(--c-ink); background: linear-gradient(var(--c-gold), var(--c-gold)) 0 100% / 100% 1px no-repeat; }
+
+/* ---------- Services ---------- */
+.sp-svc-head .title { font-size: clamp(1.6rem, 3vw, 2.3rem); }
+.sp-svc-list { margin: clamp(1.6rem, 3vw, 2.6rem) 0 0; padding: 0; list-style: none; border-top: 1px solid var(--c-line-light); }
+.sp-svc { display: grid; grid-template-columns: 5.5rem 2.5rem minmax(0, 1fr) auto; align-items: center; gap: clamp(1rem, 3vw, 2.4rem); padding: 1.5rem 0; border-bottom: 1px solid var(--c-line-light); transition: background var(--dur-fast); }
+.sp-svc:hover { background: rgba(201, 162, 90, .07); }
+.sp-svc-img { aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--radius); background: var(--c-ivory-deep); }
+.sp-svc-img img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.sp-svc-no { font-size: .7rem; letter-spacing: .2em; color: var(--c-gold); }
+.sp-svc h3 { margin: 0 0 .5rem; font-size: 1.05rem; font-weight: 400; letter-spacing: .12em; text-transform: uppercase; }
+.sp-svc p { margin: 0; max-width: 34rem; line-height: 1.7; color: var(--c-muted-light); }
+.sp-svc .link-line { color: var(--c-ink); white-space: nowrap; }
+.sp-svc .link-line:hover { color: var(--c-ink); }
+
+/* ---------- Tablet and phone ---------- */
+@media (max-width: 991.98px) {
+  .sp-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 767.98px) {
+  .sp-svc { grid-template-columns: 4.5rem minmax(0, 1fr); gap: 1rem 1.2rem; }
+  .sp-svc-no { display: none; }
+  .sp-svc .link-line { grid-column: 2; justify-self: start; }
+}
+@media (prefers-reduced-motion: reduce) { .sp-pane { animation: none; } }

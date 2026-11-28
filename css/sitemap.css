@@ -1,0 +1,18 @@
+/* ==========================================================
+   SITE MAP SCREEN  (owner: Obash)
+   One ivory room: Home on top, then four hairline columns that mirror the menu. No JavaScript.
+   ========================================================== */
+.sm-section { padding-top: clamp(2.2rem, 4vw, 3.6rem); }
+.sm-home { margin: 0 0 clamp(1.8rem, 3vw, 2.6rem); padding-bottom: clamp(1.4rem, 3vw, 2.2rem); border-bottom: 1px solid var(--c-line-light); }
+.sm-home .link-line { color: var(--c-ink); }
+.sm-home .link-line:hover { color: var(--c-ink); }
+
+.sm-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(1.6rem, 4vw, 4rem); }
+.sm-head { margin: 0 0 1.4rem; padding-bottom: 1rem; border-bottom: 1px solid var(--c-gold); font-size: .68rem; font-weight: 500; letter-spacing: .28em; text-transform: uppercase; color: var(--c-ink); }
+.sm-col ul { margin: 0; padding: 0; list-style: none; }
+.sm-col li { border-bottom: 1px solid var(--c-line-light); }
+.sm-col a { display: block; padding: .85rem 0; color: var(--c-muted-light); transition: color var(--dur-fast), padding-left .3s var(--ease); }
+.sm-col a:hover, .sm-col a:focus-visible { color: var(--c-ink); padding-left: .6rem; box-shadow: inset 2px 0 0 var(--c-gold); }
+
+@media (max-width: 991.98px) { .sm-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 575.98px) { .sm-grid { grid-template-columns: minmax(0, 1fr); } }

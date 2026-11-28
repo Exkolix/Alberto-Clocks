@@ -12,7 +12,7 @@ AW.router = (function () {
     'technology':    { file: 'views/technology.html',    title: 'Technology',              init: function (p) { AW.technology.init(p); } },
     'gallery':       { file: 'views/gallery.html',       title: 'Gallery',                 init: function () { AW.gallery.init(); } },
     'store-locator': { file: 'views/store-locator.html', title: 'Store Locator & Contact', init: function (p) { AW.storeLocator.init(p); } },
-    'support':       { file: 'views/support.html',       title: 'Support' },
+    'support':       { file: 'views/support.html',       title: 'Support',                 init: function (p) { AW.support.init(p); } },
     'about':         { file: 'views/about.html',         title: 'About Us' },
     'sitemap':       { file: 'views/sitemap.html',       title: 'Site Map' }
   };
