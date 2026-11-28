@@ -86,16 +86,23 @@ const C = {
 Object.entries(C).forEach(([k, [id, bg]]) => out(`collections/${k}.svg`, svg(800, 1000, watch({ cx: 400, cy: 520, r: 250, ...W[id] }), bg)));
 
 // Gallery teaser: three crops
-out('gallery/g1.svg', svg(800, 1000, watch({ cx: 520, cy: 560, r: 430, ...W['regent-perpetual'] }), ['#3a2f26', '#0e0b09']));
-out('gallery/g2.svg', svg(800, 1000, watch({ cx: 300, cy: 440, r: 300, ...W['sovereign-skeleton'] }), ['#2a2f36', '#0a0b0d']));
-out('gallery/g3.svg', svg(800, 1000, watch({ cx: 420, cy: 640, r: 360, ...W['abyss-diver-300'] }), ['#10303f', '#040709']));
-out('gallery/g4.svg', svg(800, 1000, watch({ cx: 400, cy: 500, r: 330, ...W['monarch-tourbillon'] }), ['#1d2430', '#07090c']));
-out('gallery/g5.svg', svg(800, 1000, watch({ cx: 380, cy: 560, r: 300, ...W['aviator-mk-ii'] }), ['#33281d', '#0c0907']));
-out('gallery/g6.svg', svg(800, 1000, watch({ cx: 400, cy: 520, r: 320, ...W['heritage-1962-chronograph'] }), ['#2e2418', '#0b0907']));
-out('gallery/g7.svg', svg(800, 1000, watch({ cx: 460, cy: 480, r: 380, ...W['pulse-pro-titanium'] }), ['#1c2630', '#06090c']));
-out('gallery/g8.svg', svg(800, 1000, watch({ cx: 340, cy: 600, r: 340, ...W['deco-dress-1938'] }), ['#33302a', '#0b0a09']));
-out('gallery/g9.svg', svg(800, 1000, watch({ cx: 420, cy: 520, r: 300, ...W['velocity-racer'] }), ['#2a1a18', '#0a0707']));
-out('gallery/g10.svg', svg(800, 1000, watch({ cx: 380, cy: 540, r: 350, ...W['solar-trail'] }), ['#26301f', '#080a07']));
+// Gallery wall (masonry): photos of different heights, like a real photo feed. [file, width, height, watch, background, size, x, y] (x/y = watch centre as a share of the frame)
+[
+  ['g1', 800, 1000, 'regent-perpetual', ['#3a2f26', '#0e0b09'], .5, .62, .56],
+  ['g2', 800, 800, 'sovereign-skeleton', ['#2a2f36', '#0a0b0d'], .36, .4, .5],
+  ['g3', 800, 1200, 'abyss-diver-300', ['#10303f', '#040709'], .4, .52, .56],
+  ['g4', 800, 900, 'monarch-tourbillon', ['#1d2430', '#07090c'], .4, .5, .5],
+  ['g5', 800, 1100, 'aviator-mk-ii', ['#33281d', '#0c0907'], .34, .47, .5],
+  ['g6', 800, 1000, 'heritage-1962-chronograph', ['#2e2418', '#0b0907'], .36, .5, .52],
+  ['g7', 800, 1300, 'pulse-pro-titanium', ['#1c2630', '#06090c'], .4, .57, .46],
+  ['g8', 800, 800, 'deco-dress-1938', ['#33302a', '#0b0a09'], .42, .45, .55],
+  ['g9', 800, 1100, 'velocity-racer', ['#2a1a18', '#0a0707'], .33, .52, .5],
+  ['g10', 800, 900, 'solar-trail', ['#26301f', '#080a07'], .4, .48, .52],
+  ['g11', 800, 1200, 'nova-lite', ['#2c2a28', '#0f0f0f'], .38, .5, .55],
+  ['g12', 800, 1000, 'pulse-one', ['#18222b', '#05080a'], .36, .5, .5],
+  ['g13', 800, 850, 'monarch-tourbillon', ['#2b2118', '#0a0806'], .45, .6, .5],
+  ['g14', 800, 1150, 'heritage-1962-chronograph', ['#1f2b2c', '#060909'], .34, .46, .52]
+].forEach(([f, w, h, k, bg, sz, x, y]) => out(`gallery/${f}.svg`, svg(w, h, watch({ cx: w * x, cy: h * y, r: Math.min(w, h) * sz, ...W[k] }), bg)));
 
 // Workshop (gears)
 function gear(cx, cy, r, teeth, col, sw) {
