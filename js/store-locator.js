@@ -35,7 +35,7 @@ AW.storeLocator = (function () {
 
   /* ---------- 1. city tabs ---------- */
   function cities(params) {
-    var $tabs = $('#slTabs [data-city]'), $panes = $('.sl-pane'), $maps = $('#storeMap svg');
+    var $tabs = $('#slTabs [data-city]'), $panes = $('.sl-pane'), $maps = $('#storeMap [data-city]');
     var keys = $tabs.map(function () { return $(this).data('city'); }).get();
     var want = params.get('city');
     var current = keys.indexOf(want) > -1 ? want : 'lagos';
@@ -44,7 +44,7 @@ AW.storeLocator = (function () {
       current = city;
       $tabs.each(function () { var on = $(this).data('city') === city; $(this).toggleClass('active', on).attr('aria-pressed', on); });
       $panes.each(function () { $(this).prop('hidden', $(this).data('city') !== city); });
-      // SVG elements have no .hidden property, so the attribute is set directly
+      // the attribute is set directly so it works for any map element
       $maps.each(function () { if ($(this).data('city') === city) this.removeAttribute('hidden'); else this.setAttribute('hidden', ''); });
     }
     $tabs.off('click.aw').on('click.aw', function () { show($(this).data('city')); });
