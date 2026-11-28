@@ -1,0 +1,151 @@
+<link rel="stylesheet" href="css/store-locator.css">
+
+<section class="page-head">
+  <h1 class="title split"><span>Find <em>Us</em></span></h1>
+  <span class="rule reveal"></span>
+  <p class="sub reveal" style="--i:1">Stores in Abuja, Lagos and Port Harcourt</p>
+</section>
+
+<!-- ============ STORE LOCATOR ============ -->
+<section class="section section--ivory sl-section">
+  <div class="wrap">
+
+    <ul class="nav nav-lux sl-tabs reveal" id="slTabs">
+      <li><button class="nav-link" type="button" data-city="abuja" aria-pressed="false">Abuja</button></li>
+      <li><button class="nav-link active" type="button" data-city="lagos" aria-pressed="true">Lagos</button></li>
+      <li><button class="nav-link" type="button" data-city="port-harcourt" aria-pressed="false">Port Harcourt</button></li>
+    </ul>
+
+    <div class="sl-grid">
+
+      <!-- Details for the chosen city (one at a time) -->
+      <div class="sl-info reveal" style="--i:1">
+        <article class="sl-pane" data-city="abuja">
+          <h2 class="title">Abuja <em>Store</em></h2>
+          <dl class="sl-details">
+            <div><dt>Address</dt><dd>15 Aminu Kano Crescent,<br>Wuse 2, Abuja</dd></div>
+            <div><dt>Phone</dt><dd><a href="tel:+2348000000102">+234 800 000 0102</a></dd></div>
+            <div><dt>Email</dt><dd><a href="mailto:info@albertowatch.com">info@albertowatch.com</a></dd></div>
+            <div><dt>Hours</dt><dd>Mon &ndash; Sat, 9:00 &ndash; 18:00</dd></div>
+          </dl>
+          <a class="link-line" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=15%20Aminu%20Kano%20Crescent%2C%20Wuse%202%2C%20Abuja">Get directions</a>
+        </article>
+
+        <article class="sl-pane" data-city="lagos">
+          <h2 class="title">Lagos <em>Store</em></h2>
+          <dl class="sl-details">
+            <div><dt>Address</dt><dd>22 Adeola Odeku Street,<br>Victoria Island, Lagos</dd></div>
+            <div><dt>Phone</dt><dd><a href="tel:+2348000000102">+234 800 000 0102</a></dd></div>
+            <div><dt>Email</dt><dd><a href="mailto:info@albertowatch.com">info@albertowatch.com</a></dd></div>
+            <div><dt>Hours</dt><dd>Mon &ndash; Sat, 9:00 &ndash; 18:00</dd></div>
+          </dl>
+          <a class="link-line" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=22%20Adeola%20Odeku%20Street%2C%20Victoria%20Island%2C%20Lagos">Get directions</a>
+        </article>
+
+        <article class="sl-pane" data-city="port-harcourt">
+          <h2 class="title">Port Harcourt <em>Store</em></h2>
+          <dl class="sl-details">
+            <div><dt>Address</dt><dd>8 Tombia Street,<br>GRA Phase 2, Port Harcourt</dd></div>
+            <div><dt>Phone</dt><dd><a href="tel:+2348000000102">+234 800 000 0102</a></dd></div>
+            <div><dt>Email</dt><dd><a href="mailto:info@albertowatch.com">info@albertowatch.com</a></dd></div>
+            <div><dt>Hours</dt><dd>Mon &ndash; Sat, 9:00 &ndash; 18:00</dd></div>
+          </dl>
+          <a class="link-line" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=8%20Tombia%20Street%2C%20GRA%20Phase%202%2C%20Port%20Harcourt">Get directions</a>
+        </article>
+      </div>
+
+      <!-- Map box: a drawn street map for each city, the pin marks the store -->
+      <div class="sl-map reveal" style="--i:2" id="storeMap">
+        <svg viewBox="0 0 640 440" role="img" aria-label="Illustrative street map of Wuse 2, Abuja, with the store marked" data-city="abuja" hidden>
+          <rect width="640" height="440" class="sl-bg"/>
+          <g class="sl-roads">
+            <circle cx="320" cy="470" r="130"/><circle cx="320" cy="470" r="250"/><circle cx="320" cy="470" r="310"/><circle cx="320" cy="470" r="370"/>
+            <path d="M320 470V-130" transform="rotate(-60 320 470)"/><path d="M320 470V-130" transform="rotate(-45 320 470)"/><path d="M320 470V-130" transform="rotate(-30 320 470)"/><path d="M320 470V-130" transform="rotate(-15 320 470)"/><path d="M320 470V-130"/><path d="M320 470V-130" transform="rotate(15 320 470)"/><path d="M320 470V-130" transform="rotate(30 320 470)"/><path d="M320 470V-130" transform="rotate(45 320 470)"/><path d="M320 470V-130" transform="rotate(60 320 470)"/>
+          </g>
+          <circle class="sl-main" cx="320" cy="470" r="190"/>
+          <text class="sl-label" x="388" y="262">Aminu Kano Crescent</text>
+          <g class="sl-pin" transform="translate(353 283)"><circle class="sl-ring" r="16"/><circle class="sl-pulse" r="16"/><circle r="6"/></g>
+        </svg>
+
+        <svg viewBox="0 0 640 440" role="img" aria-label="Illustrative street map of Victoria Island, Lagos, with the store marked" data-city="lagos">
+          <rect width="640" height="440" class="sl-bg"/>
+          <path class="sl-roads" d="M0 140H640M0 190H640M0 290H640M100 0V440M180 0V440M260 0V440M320 0V440M380 0V440M460 0V440M540 0V440"/>
+          <path class="sl-main" d="M0 240H640"/>
+          <path class="sl-water" d="M0 0H640V64Q540 112 420 84T160 98Q70 104 0 76Z"/>
+          <path class="sl-water" d="M0 440V366Q150 336 310 374T640 352V440Z"/>
+          <text class="sl-label" x="344" y="228">Adeola Odeku Street</text>
+          <g class="sl-pin" transform="translate(320 240)"><circle class="sl-ring" r="16"/><circle class="sl-pulse" r="16"/><circle r="6"/></g>
+        </svg>
+
+        <svg viewBox="0 0 640 440" role="img" aria-label="Illustrative street map of GRA Phase 2, Port Harcourt, with the store marked" data-city="port-harcourt" hidden>
+          <rect width="640" height="440" class="sl-bg"/>
+          <path class="sl-roads" d="M0 120L470 90M0 200L500 170M0 280L480 270M0 360L470 350M110 0L130 440M230 0L250 440M350 0L360 440M60 440L400 0M200 440L520 70"/>
+          <path class="sl-main" d="M0 440L430 0"/>
+          <path class="sl-water" d="M470 0Q520 120 470 220T520 440H640V0Z"/>
+          <text class="sl-label" x="228" y="196">Tombia Street</text>
+          <g class="sl-pin" transform="translate(300 215)"><circle class="sl-ring" r="16"/><circle class="sl-pulse" r="16"/><circle r="6"/></g>
+        </svg>
+        <p class="sl-cap">Illustrative map</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section section--dark sl-contact" id="contactSection">
+  <div class="wrap sl-contact-grid">
+
+    <div class="sl-contact-intro">
+      <h2 class="title reveal">Send an <em>Enquiry</em></h2>
+      <span class="rule rule--left reveal"></span>
+      <p class="reveal" style="--i:1">Ask about a watch, a repair or a valuation.</p>
+      <ul class="sl-direct reveal" style="--i:2">
+        <li><span>Email</span><a href="mailto:info@albertowatch.com">info@albertowatch.com</a></li>
+        <li><span>Phone</span><a href="tel:+2348000000102">+234 800 000 0102</a></li>
+        <li><span>Head store</span>22 Adeola Odeku Street, Victoria Island, Lagos</li>
+      </ul>
+    </div>
+
+    <div class="sl-formwrap reveal" style="--i:1">
+      <form id="contactForm" novalidate>
+        <div class="sl-row">
+          <div class="field"><label for="cfName">Name</label><input id="cfName" name="name" type="text" autocomplete="name" maxlength="60" aria-describedby="cfNameErr"><span class="error" id="cfNameErr" aria-live="polite"></span></div>
+          <div class="field"><label for="cfEmail">Email</label><input id="cfEmail" name="email" type="email" autocomplete="email" maxlength="80" aria-describedby="cfEmailErr"><span class="error" id="cfEmailErr" aria-live="polite"></span></div>
+        </div>
+        <div class="sl-row">
+          <div class="field"><label for="cfPhone">Phone (optional)</label><input id="cfPhone" name="phone" type="tel" autocomplete="tel" maxlength="24" aria-describedby="cfPhoneErr"><span class="error" id="cfPhoneErr" aria-live="polite"></span></div>
+          <div class="field"><label for="cfStore">Preferred store</label>
+            <select id="cfStore" name="store">
+              <option value="">Any store</option>
+              <option value="Abuja">Abuja</option>
+              <option value="Lagos">Lagos</option>
+              <option value="Port Harcourt">Port Harcourt</option>
+            </select><span class="error"></span></div>
+        </div>
+        <div class="field"><label for="cfTopic">Topic</label>
+          <select id="cfTopic" name="topic" aria-describedby="cfTopicErr">
+            <option value="">Choose a topic</option>
+            <option value="General question">General question</option>
+            <option value="A watch">A watch</option>
+            <option value="Repair or servicing">Repair or servicing</option>
+            <option value="Appraisal">Appraisal</option>
+          </select><span class="error" id="cfTopicErr" aria-live="polite"></span></div>
+        <div class="field"><label for="cfMsg">Message</label><textarea id="cfMsg" name="message" maxlength="1000" aria-describedby="cfMsgErr"></textarea><span class="error" id="cfMsgErr" aria-live="polite"></span></div>
+        <button class="btn-gold" type="submit">Send message
+          <svg viewBox="0 0 18 10" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M0 5h16M12 1l4 4-4 4"/></svg></button>
+      </form>
+
+      <!-- shown after a valid send -->
+      <div class="sl-done" id="contactDone" tabindex="-1" hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-6.5"/></svg>
+        <h3 class="title" id="doneTitle">Thank you</h3>
+        <p id="doneText"></p>
+        <button class="link-line" type="button" id="contactAgain">Send another message</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- </body> (keeps VS Code Live Server from cutting this file short; leave it as the last line) -->

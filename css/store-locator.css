@@ -1,0 +1,83 @@
+/* ==========================================================
+   STORE LOCATOR + CONTACT SCREEN  (owner: Obash)
+   Top: ivory room with city tabs, store details and a drawn map.
+   Bottom: dark room with the enquiry form.
+   ========================================================== */
+.sl-section { padding-top: clamp(2.2rem, 4vw, 3.6rem); }
+
+/* ---------- City tabs (.nav-lux is made for dark rooms, so its colours are flipped for ivory) ---------- */
+.sl-tabs.nav-lux { border-bottom-color: var(--c-line-light); }
+.sl-tabs .nav-link { color: var(--c-muted-light); }
+.sl-tabs .nav-link:hover, .sl-tabs .nav-link.active { color: var(--c-ink); }
+
+/* ---------- Details + map ---------- */
+.sl-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; margin-top: clamp(2rem, 4vw, 3.4rem); }
+.sl-pane { animation: sl-in .6s var(--ease) backwards; }
+.sl-pane[hidden] { display: none; }
+.sl-pane .title { font-size: clamp(1.6rem, 3vw, 2.3rem); }
+.sl-details { margin: clamp(1.4rem, 3vw, 2.2rem) 0; }
+.sl-details > div { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 1rem; padding: 1.05rem 0; border-bottom: 1px solid var(--c-line-light); }
+.sl-details > div:first-child { border-top: 1px solid var(--c-line-light); }
+.sl-details dt { font-size: .62rem; font-weight: 500; letter-spacing: .24em; text-transform: uppercase; color: var(--c-muted-light); line-height: 1.9; }
+.sl-details dd { margin: 0; line-height: 1.7; }
+.sl-details a { background: linear-gradient(var(--c-gold), var(--c-gold)) 0 100% / 0 1px no-repeat; transition: background-size .45s var(--ease); }
+.sl-details a:hover { background-size: 100% 1px; }
+.sl-info .link-line { color: var(--c-ink); }
+.sl-info .link-line:hover, .sl-info a:hover .link-line { color: var(--c-ink); }
+
+.sl-map { position: relative; aspect-ratio: 640 / 440; overflow: hidden; background: #0E0E0E; border-radius: var(--radius); color: var(--c-gold); }
+.sl-map svg { display: block; width: 100%; height: 100%; animation: sl-in .6s var(--ease) backwards; }
+.sl-map svg[hidden] { display: none; }
+.sl-cap { position: absolute; left: 1rem; bottom: .8rem; font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255, 255, 255, .4); }
+.sl-bg { fill: #0E0E0E; stroke: none; }
+.sl-roads { fill: none; stroke: rgba(255, 255, 255, .11); stroke-width: 1; }
+.sl-roads path, .sl-roads circle { fill: none; stroke: rgba(255, 255, 255, .11); stroke-width: 1; }
+.sl-main { fill: none; stroke: rgba(255, 255, 255, .28); stroke-width: 2.2; }
+.sl-water { fill: #0B1216; stroke: rgba(127, 163, 184, .25); stroke-width: 1; }
+.sl-label { fill: rgba(255, 255, 255, .7); font-family: var(--font); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; }
+.sl-pin circle { fill: currentColor; stroke: none; }
+.sl-pin .sl-ring { fill: rgba(201, 162, 90, .16); stroke: currentColor; stroke-width: 1; }
+.sl-pin .sl-pulse { fill: none; stroke: currentColor; stroke-width: 1; transform-box: fill-box; transform-origin: center; animation: sl-pulse 2.4s ease-out infinite; }
+@keyframes sl-in { from { opacity: 0; transform: translateY(14px); } }
+@keyframes sl-pulse { from { transform: scale(1); opacity: .7; } to { transform: scale(2.4); opacity: 0; } }
+
+/* ---------- Contact ---------- */
+.sl-contact { scroll-margin-top: var(--header-h); }
+.sl-contact-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(2.4rem, 6vw, 6rem); align-items: start; }
+.sl-contact-intro .title { font-size: clamp(1.7rem, 3.2vw, 2.6rem); }
+.sl-contact-intro .rule--left { margin-left: 0; transform-origin: 0 50%; }
+.sl-contact-intro > p { margin-top: 1.4rem; color: var(--c-muted-dark); font-size: 1.05rem; max-width: 34ch; }
+.sl-direct { margin: clamp(1.8rem, 3vw, 2.6rem) 0 0; padding: 0; list-style: none; border-top: 1px solid rgba(255, 255, 255, .1); }
+.sl-direct li { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 1rem; padding: 1rem 0; border-bottom: 1px solid rgba(255, 255, 255, .1); line-height: 1.7; }
+.sl-direct span { font-size: .62rem; font-weight: 500; letter-spacing: .24em; text-transform: uppercase; color: var(--c-gold); line-height: 1.9; }
+.sl-direct a { background: linear-gradient(var(--c-gold), var(--c-gold)) 0 100% / 0 1px no-repeat; transition: background-size .45s var(--ease); }
+.sl-direct a:hover { background-size: 100% 1px; }
+
+.sl-formwrap { min-width: 0; }
+.sl-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 2rem; }
+.sl-formwrap .field { margin-bottom: 1.2rem; }
+.sl-formwrap .field select { -webkit-appearance: none; appearance: none; padding-right: 1.6rem; color-scheme: dark; cursor: pointer; background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6' fill='none' stroke='%23C9A25A' stroke-width='1.2'%3E%3Cpath d='M1 1l4 4 4-4'/%3E%3C/svg%3E") no-repeat right .1rem center / 10px 6px; }
+.sl-formwrap .field select option { background: var(--c-charcoal); color: var(--c-white); }
+.sl-formwrap .field input[aria-invalid="true"], .sl-formwrap .field select[aria-invalid="true"], .sl-formwrap .field textarea[aria-invalid="true"] { border-bottom-color: #E58B7B; }
+.sl-formwrap .field textarea { min-height: 8rem; }
+.sl-formwrap .btn-gold { margin-top: .6rem; }
+
+.sl-done { padding: clamp(1.8rem, 4vw, 3rem); border: 1px solid var(--c-line-dark); border-radius: var(--radius); animation: sl-in .6s var(--ease) backwards; }
+.sl-done[hidden] { display: none; }
+.sl-done:focus { outline: 0; }
+.sl-done svg { width: 38px; height: 38px; margin-bottom: 1.2rem; color: var(--c-gold); }
+.sl-done .title { font-size: clamp(1.4rem, 2.6vw, 2rem); }
+.sl-done p { margin: 1rem 0 1.6rem; color: var(--c-muted-dark); line-height: 1.8; max-width: 46ch; }
+.sl-done .link-line { padding: 0; background: none; border: 0; font: inherit; font-weight: 500; cursor: pointer; }
+
+/* ---------- Tablet and phone ---------- */
+@media (max-width: 991.98px) {
+  .sl-grid, .sl-contact-grid { grid-template-columns: minmax(0, 1fr); }
+  .sl-grid { gap: 2rem; }
+  .sl-map { order: -1; }
+}
+@media (max-width: 575.98px) {
+  .sl-row { grid-template-columns: minmax(0, 1fr); }
+  .sl-details > div, .sl-direct li { grid-template-columns: 5.2rem minmax(0, 1fr); gap: .6rem; }
+  .sl-formwrap .btn-gold { width: 100%; justify-content: center; }
+}

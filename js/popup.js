@@ -16,6 +16,7 @@ AW.popup = (function () {
       $('#wmName').text(w.name);
       $('#wmPrice').text(AW.fmt(w.price));
       $('#wmDesc').text(w.description);
+      $('.wm-cta').attr('href', '#/contact?watch=' + w.id);   // the contact form opens with this watch filled in
       $('#wmYear').text(w.year);
       $('#wmMove').text(w.movement);
       $('#wmCase').text(w.case);
@@ -24,5 +25,12 @@ AW.popup = (function () {
       modal.show();
     });
   }
+  // Bootstrap's data-bs-dismiss cancels a link's own navigation, so the Enquire button goes to its address
+  // itself once the popup has finished closing.
+  $(document).on('click.aw', '.wm-cta', function () {
+    var h = this.getAttribute('href'), el = document.getElementById('watchModal');
+    el.addEventListener('hidden.bs.modal', function () { if (location.hash !== h) location.hash = h; }, { once: true });
+  });
+
   return { open: open };
 })();

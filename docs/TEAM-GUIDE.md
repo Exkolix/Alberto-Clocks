@@ -59,7 +59,7 @@ Update your row when you push. Statuses: `Not started`, `In progress`, `Ready fo
 | Price List | Obash | Done (v1) | `#/price-list` |
 | Technology | Obash | Done (v1) | `#/technology` |
 | Gallery | B | Not started | `#/gallery` |
-| Store Locator + Contact | B | Not started | `#/store-locator` |
+| Store Locator + Contact | Obash | Done (v1) | `#/store-locator` |
 | Support | B | Not started | `#/support` |
 | About | B | Not started | `#/about` |
 | Site Map | B | Not started | `#/sitemap` |
