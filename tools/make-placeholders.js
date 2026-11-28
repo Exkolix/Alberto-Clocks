@@ -91,6 +91,11 @@ out('gallery/g2.svg', svg(800, 1000, watch({ cx: 300, cy: 440, r: 300, ...W['sov
 out('gallery/g3.svg', svg(800, 1000, watch({ cx: 420, cy: 640, r: 360, ...W['abyss-diver-300'] }), ['#10303f', '#040709']));
 out('gallery/g4.svg', svg(800, 1000, watch({ cx: 400, cy: 500, r: 330, ...W['monarch-tourbillon'] }), ['#1d2430', '#07090c']));
 out('gallery/g5.svg', svg(800, 1000, watch({ cx: 380, cy: 560, r: 300, ...W['aviator-mk-ii'] }), ['#33281d', '#0c0907']));
+out('gallery/g6.svg', svg(800, 1000, watch({ cx: 400, cy: 520, r: 320, ...W['heritage-1962-chronograph'] }), ['#2e2418', '#0b0907']));
+out('gallery/g7.svg', svg(800, 1000, watch({ cx: 460, cy: 480, r: 380, ...W['pulse-pro-titanium'] }), ['#1c2630', '#06090c']));
+out('gallery/g8.svg', svg(800, 1000, watch({ cx: 340, cy: 600, r: 340, ...W['deco-dress-1938'] }), ['#33302a', '#0b0a09']));
+out('gallery/g9.svg', svg(800, 1000, watch({ cx: 420, cy: 520, r: 300, ...W['velocity-racer'] }), ['#2a1a18', '#0a0707']));
+out('gallery/g10.svg', svg(800, 1000, watch({ cx: 380, cy: 540, r: 350, ...W['solar-trail'] }), ['#26301f', '#080a07']));
 
 // Workshop (gears)
 function gear(cx, cy, r, teeth, col, sw) {
